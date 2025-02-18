@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All converters</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>inch to cm</h3>
+                <form action="">
+                    <input type="number" id="inch" class="form-control" placeholder="value in inch">
+                    <div class="text-center">
+                    <input type="button" value="Convert" class="btn btn-primary m-3 p-3" onclick="inchToCm()">
+                </div>
+                    <input type="text" id="cmresult" class="form-control" readonly placeholder="value in cm">
+                </form>
+            </div>
+            <div class="col-md-4">
+                <h3>kg to pound</h3>
+                <form action="">
+                    <input type="number" id="kg" class="form-control" placeholder="value in kilogram">
+                    <div class="text-center">
+                    <input type="button" value="Convert" class="btn btn-info m-3 p-3" onclick="kgToLb()">
+                </div>
+                    <input type="text" id="lbResult" class="form-control" readonly placeholder="value in lb">
+                </form>
+            </div>
+            <div class="col-md-4">
+                <h3>celcius to fahrenheit</h3>
+                <form action="">
+                    <input type="number" id="celcius" class="form-control" placeholder="value in celcius">
+                    <div class="text-center">
+                    <input type="button" value="Convert" class="btn btn-warning m-3 p-3" onclick="celToFh()">
+                </div>
+                    <input type="text" id="fhResult" class="form-control" readonly placeholder="value in fatenhite">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function inchToCm(){
+            var inch = document.getElementById("inch").value;
+            var cm = inch * 2.54;
+            document.getElementById("cmresult").value = cm;
+        }
+
+        function kgToLb(){
+            var kg = document.getElementById("kg").value;
+            var lb = kg * 2.204;
+            document.getElementById("lbResult").value = lb;
+        }
+        function celToFh(){
+            var celcius = document.getElementById("celcius").value;
+            var fahrenheit = (celcius * 1.8) + 32;
+            document.getElementById("fhResult").value = fahrenheit;
+        }
+    </script>
+</body>
+</html>

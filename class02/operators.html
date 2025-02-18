@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="bg-info p-3">
+        <h3 class="display-5">Operators</h3>
+        <ul class="list-group list-unstyled">
+          <li class="list-group-item">Arithmetic operators: +,-,*,/,%,++,--</li>
+          <li class="list-group-item">Assignment operators: =,+=,-=,*=,/=%</li>
+          <li class="list-group-item">Comparison operators: ==,!=,>,<,>=,<= (result is always boolean)</li>
+          <li class="list-group-item">Logical operators: &&,|| , !</li>
+          <li class="list-group-item"><del> Bitwise operators: &,|,^</del></li>
+          <li class="list-group-item">Unary operators: ++,--</li>
+          <li class="list-group-item">Special operators: instanceof, void, typeof, delete, new, in</li>
+        </ul>
+        <h1 class="display-5">Operands</h1>
+        <p>
+            In <code>x = 5 + 6</code>: <br>
+             x, 5 and 6 are operands <br>
+             = and + are operators
+        </p>
+      </div>
+    </div>
+    <script>
+        var x = (5+6)*4;
+        console.log(x);
+        var y = 4/(5*4);
+        console.log(y);
+    </script>
+  </body>
+</html>

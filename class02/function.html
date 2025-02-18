@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      function: a block of code that performs a specific task when it is called
+    </h1>
+    <div>
+      <h2>general syntax to create a function</h2>
+      <pre>
+        <code>
+            function functionName(parameters) {
+                //code to be executed
+            }
+        </code>
+    </pre>
+      <h2>general syntax to call a function</h2>
+      <pre>
+        <code>
+            functionName(parameters)
+        </code>
+    </pre>
+    </div>
+    <h1>function can be 2 types: built-in and user-defined</h1>
+    <ul>
+        <li>Built in popular functions: alert(), confirm(), prompt(), Number(), parseInt(), parseFloat()</li>
+        <li>User defined functions</li>
+    </ul>
+    <hr>
+    <h1>Square calculation form</h1>
+    <form action="">
+        <label for="num">Number: <input type="number" id="num"></label>
+        <input type="button" value="Calculate" onclick="square(num.value)">
+        <label for="" id="result"></label>
+    </form>
+    <br><br><br><br><br><br>
+    <script>
+        //square function
+        function square(n){
+            var result = n*n;//result id a variable which containes value of n*n. n will be provided by user when the function is called
+            // alert(result);
+            // console.log(result);
+            // document.write(result);
+            document.getElementById("result").innerHTML = "Square of " + n + " is " + result;
+        }
+        //call square
+        // square(5);
+        // document.write("<br>");
+        // square(15);
+        // console.log("kaj ses");
+    </script>
+  </body>
+</html>
