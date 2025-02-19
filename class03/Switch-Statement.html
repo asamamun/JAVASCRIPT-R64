@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>switch statement syntax</h1>
+    <pre>
+        <code>
+            switch(expression) {
+                case value1:
+                    //code to be executed
+                    break;
+                case value2:
+                    //code to be executed
+                    break;
+                default:
+                    //code to be executed
+            }
+        </code>
+    </pre>
+</body>
+</html>
+<script>
+    //find event or odd number in switch statement
+    var x = prompt("number");
+    switch(x%2){
+        case 0:
+            console.log("even");
+            break;
+        case 1:
+            console.log("odd");
+            break;
+        default:
+            console.log("invalid");
+    }
+</script>

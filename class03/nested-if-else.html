@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>nested if-else-if: grade calculator</h1>
+    <script>
+        var mark = prompt("mark");//get value from user
+        var grade = "not defined";//result variable
+        if(mark < 0 || mark > 100){
+            alert("invalid mark");
+        } else if (mark >= 90) {
+            grade = "A+ , Excellent, congratulation";
+        } else if (mark >= 80) {
+            grade = "A, Very good";
+        } else if (mark >= 70) {
+            grade = "B, Good";
+        } else if (mark >= 60) {
+            grade = "C, Satisfactory";
+        } else if (mark >= 50) {
+            grade = "D, Try to improve";
+        } else {
+            grade = "F, Fail, better luck next time";
+        }
+        alert("your grade is " + grade);
+    </script>
+
+</body>
+</html>

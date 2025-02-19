@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>function can:</h2>
+    <ul>
+      <li>function can access global variables</li>
+      <li>function can accept parameters</li>
+      <li>function can return values and it can return back from anywhere. it may return multiple values but it can only return one value</li>
+    </ul>
+    <script>
+      function addTwoNum(a, b) {
+        // return "no work today";
+        if(typeof a !== "number" || typeof b !== "number"){
+            return "invalid input";
+        }
+        return a + b;
+      }
+//101,404,67,44, 66, 66
+      var result = addTwoNum(101,404) + addTwoNum(67,44) + addTwoNum(66,66);
+      console.log(result);
+
+      function sq(a){ 
+        return a*a;
+    }
+      var result = sq(7) + sq(3) + 2*7*3;
+    //   var result = 25 + 36 + 2*5*6;
+      console.log(result);
+    </script>
+  </body>
+</html>

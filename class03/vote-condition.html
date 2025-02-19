@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h3>VOTE</h3>
+        <form action="">
+            <input type="number" id="age" class="form-control" placeholder="your age">
+            <div class="text-center">
+            <input type="button" value="Check" class="btn btn-primary m-3 p-3" onclick="check()">
+        </div>
+        </form>
+        <h3 id="result"></h3>
+        <!-- vote form -->
+         <div class="d-none" id="voteContainer">
+             <form action="">
+                <div class="form-group">
+                <label for="vote" class="form-label">Parties</label>
+                <select name="vote" id="vote" required class="form-select">
+                    <option value="-1" disabled selected>Select a party</option>
+                    <option value="JP">Jatio Party</option>
+                    <option value="JoP">Jonota Party</option>
+                    <option value="BNP">BNP</option>
+                    <option value="ABP">AB Party</option>
+                    <option value="CN">Chatro Nagorik Party</option>
+                </select>
+            </div>
+                <div class="form-group text-center">
+                    <input type="button" value="Check" class="btn btn-primary m-3 p-3" onclick="check()">
+                </div>
+         </div>
+    </div>
+    <script>
+        function check(){
+            //get the form values
+            var age = document.getElementById("age").value;
+            //if no value is provided, show error in result ID
+            if(age == "" || age == null){
+                document.getElementById("result").innerHTML = "Please enter your age";
+                return;
+            }   
+            if(age >= 18){
+                document.getElementById("result").innerHTML = "You can vote";
+                document.getElementById("voteContainer").classList.remove("d-none");
+            }else{
+                document.getElementById("result").innerHTML = "You can't vote";
+                document.getElementById("voteContainer").classList.add("d-none");
+            }
+        }
+    </script>
+</body>
+</html>

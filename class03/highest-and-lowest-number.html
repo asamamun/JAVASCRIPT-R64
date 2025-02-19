@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>find the highest and lowest number among three numbers</h1>
+    <script>
+        var a = prompt("number 1");
+        var b = prompt("number 2");
+        var c = prompt("number 3");
+        //highest
+        console.log("highest:");
+        if(a>b && a>c){
+            console.log(a);
+        }else if(b>a && b>c){
+            console.log(b);
+        }else{
+            console.log(c);
+        }
+        // var max = Math.max(a,b,c);
+        // var min = Math.min(a,b,c);
+        // console.log(max);
+        //lowest
+        console.log("lowest:");
+        if(a<b && a<c){
+            console.log(a);
+        }else if(b<a && b<c){
+            console.log(b);
+        }else{
+            console.log(c);
+        }
+    </script>
+</body>
+</html>
