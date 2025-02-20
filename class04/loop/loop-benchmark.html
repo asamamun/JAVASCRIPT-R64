@@ -1,0 +1,28 @@
+<script>
+    const arr = Array(1000000).fill(0); // 1 million elements
+console.time("for");
+for (let i = 0, len = arr.length; i < len; i++) {
+  arr[i] += 1;
+}
+console.timeEnd("for");
+
+console.time("while");
+let j = 0, len = arr.length;
+while (j < len) {
+  arr[j] += 1;
+  j++;
+}
+console.timeEnd("while");
+
+console.time("forEach");
+arr.forEach((item, index) => {
+  arr[index] += 1;
+});
+console.timeEnd("forEach");
+
+console.time("for...of");
+for (const item of arr) {
+  item + 1; // Note: This won't modify the array, just for timing
+}
+console.timeEnd("for...of");
+</script>

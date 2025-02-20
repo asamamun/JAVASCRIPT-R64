@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharapat(namota)</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" class="form-control" id="number" placeholder="ধারাপাত নামোটা">
+        <input type="button" value="Show" class="btn btn-primary m-3" onclick="showTable()">
+        <table class="table table-striped w-25 m-auto" id="output">
+            
+            
+        </table>
+    </div>
+
+    <script>
+        
+        function showTable(){
+            let number = document.getElementById("number").value;
+            let output = document.getElementById("output");
+            output.innerHTML = `<thead>
+                <tr>
+                    <th>ধারাপাত</th>
+                    <th> = </th>
+                    <th>ফলাফল</th>
+                </tr>
+            </thead>`;
+            for (let index = 1; index <= 10; index++) {
+                let result = number * index;
+                output.innerHTML += `<tr>
+                <th>${number} X ${index} </th>
+                <td>=</td>
+                <td>${result}</td>
+            </tr>`;
+            }
+        }
+    </script>
+</body>
+</html>

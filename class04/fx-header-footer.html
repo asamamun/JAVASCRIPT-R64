@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cname{
+            font-size: 2em;
+            /* box-shadow and text-shadow and hover affect */
+            box-shadow: 2px 2px 2px 2px red;
+            text-shadow: 2px 2px 2px red;
+            cursor: pointer;
+            /* margin-right: 100px; */
+        }
+        .cname:hover{
+            box-shadow: none;
+            text-shadow: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="main">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam cupiditate obcaecati magnam culpa aliquid voluptas sunt perferendis quaerat, placeat illum modi aperiam at nemo maxime, ad veniam. Aliquam, cum quod.</p>
+    </div>
+    <div id="footer"></div>
+    <script>
+        var c = prompt("enter company name");
+        function header(companyname){
+            var h = document.getElementById("header");
+            //concatenation
+            // h.innerHTML = '<img src=logoipsum-354.svg" alt="" width="100px"><h3>'+ companyname+'</h3>';
+            //template literal
+            h.innerHTML = `<img src="logoipsum-354.svg" alt="" width="100px"><h3 class="cname"> ${companyname} </h3> <span></span>`;
+
+            h.style.textAlign = "center";
+            h.style.backgroundColor = "green";
+            h.style.color = "white";
+            h.style.padding = "10px";
+            //flex
+            h.style.display = "flex";
+            h.style.justifyContent = "space-between";
+            h.style.alignItems = "center";
+            h.style.height = "100px";
+        }
+        function footer(companyname, year){
+            var f = document.getElementById("footer");
+            f.innerHTML = "copyright &copy; " + year + " , " + companyname;
+            f.style.textAlign = "center";
+            f.style.backgroundColor = "green";
+            f.style.color = "white";
+            f.style.padding = "10px";
+        }
+
+        header(c);
+        footer(c, new Date().getFullYear());
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result"></p>
+    <script>
+        //arrow fx
+        // const multiply = (a,b) => a * b;
+ /*        const multiply = function(a,b){
+            return a * b;
+        } */
+ /*        const multiply = (a,b)=> {
+            return a * b;            
+        } */
+       //when arrow fx code block has single statement then we can remove {} and we can omit return keyword as the statement is returning automatically 
+        // const multiply = (a,b) => { return a * b};
+        const multiply = (a,b) => a * b;
+        const add = (a,b) => a + b;
+        const sub = (a,b) => a - b;
+        const mod = (a,b) => a % b;        
+        document.getElementById("result").innerHTML = mod(55,6);
+    </script>
+</body>
+</html>

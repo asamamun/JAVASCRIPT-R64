@@ -1,0 +1,35 @@
+<div id="output"></div>
+<style>
+    .red{
+        color: red;
+    }
+        .green{
+            color: green;
+        }
+</style>
+<script>
+//for loop syntax
+//    for(initialization; condition; increment/decrement){
+//     statement;
+//     ...
+//     statement;
+//    }
+var d = "";
+for (let index = 0; index <= 100 ; index++) {
+    
+    // console.log(index*2);
+    // document.getElementById("output").innerHTML += index + "<br>";
+    // document.getElementById("output").innerHTML =  document.getElementById("output").innerHTML + index + " ";
+/*     if(index % 2 === 0){
+    d = d + index + " ";
+    // alert( d);
+    } */
+    // d = d + index + " ";
+    if(index % 2 === 0){
+        d = d + "<span class='red'>" + index + "</span> ";
+    }else{
+        d = d + "<span class='green'>" + index + "</span> ";
+    }
+}
+document.getElementById("output").innerHTML = d;
+</script>

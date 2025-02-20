@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="number" class="form-control" name="imagenum" id="imagenum" placeholder="how many images you want to load?">
+            <input type="number" class="form-control" name="imagewidth" id="imagewidth" placeholder="image width">
+            <input type="number" class="form-control" name="imageheight" id="imageheight" placeholder="image height">
+            <input type="button" value="Load" class="btn btn-outline-primary" onclick="loadImages()">
+        </form>
+        <div id="imageContainer">
+
+        </div>
+        
+    </div>
+    <script>
+        //https://picsum.photos/id/1/300/200
+        function loadImages(){
+            //clear
+            document.getElementById("imageContainer").innerHTML = "";
+          var langth = document.getElementById("imagenum").value;
+          var imagew = document.getElementById("imagewidth").value;
+          var imageh = document.getElementById("imageheight").value;
+          for (let index = 1; index <= langth; index++) {
+            document.getElementById("imageContainer").innerHTML += `
+            <img src="https://picsum.photos/id/${index}/${imagew}/${imageh}" alt="" title="image number ${index}">`;             
+          }
+        }
+    </script>
+</body>
+</html>
