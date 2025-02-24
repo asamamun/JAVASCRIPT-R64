@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .colorDivs{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .colorDivs div{
+            border: 1px solid black;
+            width:150px;
+            height: 150px;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="colorDivs" id="colorDivs">
+        color div will be added by javascript
+        <div style="background-color: red;">
+            red
+        </div>
+    </div>
+    <script>
+        var colors = [
+  `AliceBlue`,
+  `AntiqueWhite`,
+  `Aqua`,
+  `Aquamarine`,
+  `Azure`,
+  `Beige`,
+  `Bisque`,
+  `Black`,
+  `BlanchedAlmond`,
+  `Blue`,
+  `BlueViolet`,
+  `Brown`,
+  `BurlyWood`,
+  `CadetBlue`,
+  `Chartreuse`,
+  `Chocolate`,
+  `Coral`,
+  `CornflowerBlue`,
+  `Cornsilk`,
+  `Crimson`,
+  `Cyan`,
+  `DarkBlue`,
+  `DarkCyan`,
+  `DarkGoldenRod`,
+  `DarkGray`,
+  `DarkGrey`,
+  `DarkGreen`,
+  `DarkKhaki`,
+  `DarkMagenta`,
+  `DarkOliveGreen`,
+  `Darkorange`,
+  `DarkOrchid`,
+  `DarkRed`,
+  `DarkSalmon`,
+  `DarkSeaGreen`,
+  `DarkSlateBlue`,
+  `DarkSlateGray`,
+  `DarkSlateGrey`,
+  `DarkTurquoise`,
+  `DarkViolet`,
+  `DeepPink`,
+  `DeepSkyBlue`,
+  `DimGray`,
+  `DimGrey`,
+  `DodgerBlue`,
+  `FireBrick`,
+  `FloralWhite`,
+  `ForestGreen`,
+  `Fuchsia`,
+  `Gainsboro`,
+  `GhostWhite`,
+  `Gold`,
+  `GoldenRod`,
+  `Gray`,
+  `Grey`,
+  `Green`,
+  `GreenYellow`,
+  `HoneyDew`,
+  `HotPink`,
+  `IndianRed`,
+  `Indigo`,
+  `Ivory`,
+  `Khaki`,
+  `Lavender`,
+  `LavenderBlush`,
+  `LawnGreen`,
+  `LemonChiffon`,
+  `LightBlue`,
+  `LightCoral`,
+  `LightCyan`,
+  `LightGoldenRodYellow`,
+  `LightGray`,
+  `LightGrey`,
+  `LightGreen`,
+  `LightPink`,
+  `LightSalmon`,
+  `LightSeaGreen`,
+  `LightSkyBlue`,
+  `LightSlateGray`,
+  `LightSlateGrey`,
+  `LightSteelBlue`,
+  `LightYellow`,
+  `Lime`,
+  `LimeGreen`,
+  `Linen`,
+  `Magenta`,
+  `Maroon`,
+  `MediumAquaMarine`,
+  `MediumBlue`,
+  `MediumOrchid`,
+  `MediumPurple`,
+  `MediumSeaGreen`,
+  `MediumSlateBlue`,
+  `MediumSpringGreen`,
+  `MediumTurquoise`,
+  `MediumVioletRed`,
+  `MidnightBlue`,
+  `MintCream`,
+  `MistyRose`,
+  `Moccasin`,
+  `NavajoWhite`,
+  `Navy`,
+  `OldLace`,
+  `Olive`,
+  `OliveDrab`,
+  `Orange`,
+  `OrangeRed`,
+  `Orchid`,
+  `PaleGoldenRod`,
+  `PaleGreen`,
+  `PaleTurquoise`,
+  `PaleVioletRed`,
+  `PapayaWhip`,
+  `PeachPuff`,
+  `Peru`,
+  `Pink`,
+  `Plum`,
+  `PowderBlue`,
+  `Purple`,
+  `Red`,
+  `RosyBrown`,
+  `RoyalBlue`,
+  `SaddleBrown`,
+  `Salmon`,
+  `SandyBrown`,
+  `SeaGreen`,
+  `SeaShell`,
+  `Sienna`,
+  `Silver`,
+  `SkyBlue`,
+  `SlateBlue`,
+  `SlateGray`,
+  `SlateGrey`,
+  `Snow`,
+  `SpringGreen`,
+  `SteelBlue`,
+  `Tan`,
+  `Teal`,
+  `Thistle`,
+  `Tomato`,
+  `Turquoise`,
+  `Violet`,
+  `Wheat`,
+  `White`,
+  `WhiteSmoke`,
+  `Yellow`,
+  `YellowGreen`,
+];
+/* console.log(colors);
+console.log(colors[colors.length-1]) */
+//clear colorDivs content
+document.getElementById("colorDivs").innerHTML = "";
+//for loop syntax 
+for (let index = 0; index < colors.length; index++) {
+    console.log(colors[index]);
+    document.getElementById("colorDivs").innerHTML += `
+    <div style="background-color: ${colors[index]};">
+            ${colors[index]}
+        </div>
+    `;
+}
+    </script>
+</body>
+</html>

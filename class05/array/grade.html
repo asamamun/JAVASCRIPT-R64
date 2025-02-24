@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="01.png" alt="">
+    <img src="02.png" alt="">
+    <script>
+        var total = 0;
+        var marks = [];
+        var subjects = ["Bangla","English","Math","Physics","Chemistry","Biology"];
+        for (let index = 0; index < subjects.length; index++) {
+            marks[index] = prompt("Enter " + subjects[index] + " marks");            
+        }
+        // console.log(marks);
+        for (let index = 0; index < marks.length; index++) {
+            total += Number(marks[index]);            
+        }
+        alert("Total marks: " + total);
+
+    </script>
+</body>
+</html>

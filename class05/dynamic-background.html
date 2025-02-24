@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Background Changer</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: background-color 3s ease, color 3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">This is a sample text</div>
+
+    <script>
+        const colors = [
+            "black", "silver", "gray", "white", "maroon", "red", "purple", "fuchsia",
+            "green", "lime", "olive", "yellow", "navy", "blue", "teal", "aqua"
+        ];
+
+        let index = 0;
+
+        function changeBackground() {
+            document.body.style.backgroundColor = colors[index];
+
+            // Adjust text color for contrast
+            const textColor = (index === 0 || index === 2 || index === 4 || index === 6 || index === 8 || index === 10 || index === 12 || index === 14) 
+                ? "white" : "black";
+            document.body.style.color = textColor;
+
+            index = (index + 1) % colors.length;
+        }
+
+        setInterval(changeBackground, 4500); // Change every 7.5 seconds
+        changeBackground(); // Initial call
+    </script>
+</body>
+</html>

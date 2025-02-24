@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #person1{
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+            
+        }
+        #person2{
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+        }
+        #person3{
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+        }
+        #person4{
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="person1"></div>
+    
+    <div id="person2"></div>
+    <div id="person3"></div>
+    <div id="person4"></div>
+    <script>
+        var numbers = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        var suits = ["&clubs;", "&diams;", "&hearts;", "&spades;"];
+
+        //get three random cards
+        for (let index = 1; index <= 4; index++) {
+            var card1 = numbers[Math.floor(Math.random() * numbers.length)];
+        var card2 = numbers[Math.floor(Math.random() * numbers.length)];
+        var card3 = numbers[Math.floor(Math.random() * numbers.length)];
+        var suit1 = suits[Math.floor(Math.random() * suits.length)];
+        var suit2 = suits[Math.floor(Math.random() * suits.length)];
+        var suit3 = suits[Math.floor(Math.random() * suits.length)];
+
+        
+        
+            document.getElementById("person" + index).innerHTML = card1 + " of " + suit1 + "<br>" + card2 + " of " + suit2 + "<br>" + card3 + " of " + suit3; 
+            
+        }
+        
+
+        
+            
+    </script>
+</body>
+</html>
