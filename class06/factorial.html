@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <style>
+        #result{
+            font-size: 2em;
+            text-align: center;
+            color: red;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>factorial</h1>
+        <form action="">
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" name="num" id="num" placeholder="enter a number">
+                <label for="num" class="input-group-text">!</label>
+                <button type="button" class="btn btn-primary" onclick="factorial()">calculate factorial</button>
+            </div>
+        </form>
+        <hr>
+        <p id="result">result</p>
+        <h3>How it works!!!!</h3>
+        <img src="factorial.png" alt="" class="img-fluid">
+    </div>
+    
+
+    
+    <script>
+        function factorial(){
+            var n = Number( document.getElementById("num").value);
+            var result = 1;
+            
+            for(var i=n; i>0; i--){
+                result = result * i; //result *=i 
+            }
+            
+            document.getElementById("result").innerHTML = `Factorial of ${n} is ${result}`;
+            /*
+            n=4
+            step 1: i=4, result = 1*4
+            step 2: i=3, result = 4*3
+            step 3: i=2, result = 12*2
+            step 4: i=1, result = 24*1
+            step 5: i=0, result = 24
+            */
+        }
+        </script>
+</body>
+</html>

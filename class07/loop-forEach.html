@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="countries.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>For looping array values, we normally use forEach method</h1>
+    <code>
+        <pre>
+            forEach Syntax:
+            array.forEach(function(currentValue, index, array) {
+                //code to be executed
+            });
+            array.forEach(element => {
+            
+            });
+        </pre>
+    </code>
+    <div class="container">
+        <div class="row" id="countryCard">
+
+        </div>
+    </div>
+    <script>
+        // var n = [3,4,9,1,3,5,67];
+        //n[6];//67
+        var idb = "Islamic Development Bank";
+        // console.log(idb[idb.length-1]);
+        
+        COUNTRIES.forEach(element => {
+            // let  bgclass= element.name[0] == "B" ? "text-bg-success" : "";
+            let bgclass = "";
+            if(element.name[0] == "B" || element.name[0] == "D"){
+                bgclass = "text-bg-success";
+            }
+            if(element.name[0] == "C"){
+                bgclass = "text-bg-info";
+            }
+
+            document.getElementById("countryCard").innerHTML += `
+                        <div class="card col-md-3 ${bgclass} g-3">
+                <div class="card-body">
+                  <h5 class="card-title">${element.name}</h5>
+                  <h6 class="card-subtitle mb-2 text-body-secondary">Code: ${element.code}</h6>
+                  <p class="card-text">Timezone: ${element.timezone} , UTC: ${element.utc}</p>
+                  <a href="#" class="card-link">Mobile Code: ${element.mobileCode}</a>                  
+                </div>
+              </div>
+            `;
+        });
+
+        </script>
+</body>
+</html>

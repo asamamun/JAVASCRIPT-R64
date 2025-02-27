@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dino Run Game</title>
+    <style>
+        .game-container {
+            width: 600px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: #f7f7f7;
+        }
+        
+        .dino {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+        }
+        
+        .obstacle {
+            width: 20px;
+            height: 40px;
+            background-color: #666;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+        .jumping {
+            animation: jump 0.6s linear;
+        }
+        
+        @keyframes jump {
+            0% { bottom: 0; }
+            50% { bottom: 100px; }
+            100% { bottom: 0; }
+        }
+        
+        .score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="dino"></div>
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="game-over">Game Over! Press Space to restart</div>
+    </div>
+
+    <script>
+        const dino = document.querySelector('.dino');
+        const gameContainer = document.querySelector('.game-container');
+        const scoreElement = document.getElementById('score');
+        const gameOverElement = document.querySelector('.game-over');
+        
+        let isJumping = false;
+        let gravity = 0.9;
+        let isGameOver = false;
+        let score = 0;
+        
+        // Control the dinosaur
+        function control(e) {
+            if (e.keyCode === 32) {
+                if (!isJumping && !isGameOver) {
+                    isJumping = true;
+                    dino.classList.add('jumping');
+                    setTimeout(() => {
+                        dino.classList.remove('jumping');
+                        isJumping = false;
+                    }, 600);
+                }
+                if (isGameOver) {
+                    resetGame();
+                }
+            }
+        }
+        
+        function generateObstacle() {
+            if (isGameOver) return;
+            
+            const obstacle = document.createElement('div');
+            obstacle.classList.add('obstacle');
+            gameContainer.appendChild(obstacle);
+            
+            let obstaclePosition = 580;
+            
+            function moveObstacle() {
+                if (obstaclePosition > -20) {
+                    obstaclePosition -= 5;
+                    obstacle.style.left = obstaclePosition + 'px';
+                    
+                    // Collision detection
+                    if (obstaclePosition > 0 && obstaclePosition < 100 && !isJumping) {
+                        gameOver();
+                    }
+                } else {
+                    obstacle.remove();
+                    score++;
+                    scoreElement.textContent = score;
+                    return;
+                }
+                
+                if (!isGameOver) {
+                    requestAnimationFrame(moveObstacle);
+                }
+            }
+            
+            moveObstacle();
+            
+            // Generate new obstacle every 2 seconds
+            if (!isGameOver) {
+                setTimeout(generateObstacle, 2000);
+            }
+        }
+        
+        function gameOver() {
+            isGameOver = true;
+            gameOverElement.style.display = 'block';
+            
+            // Remove all obstacles
+            const obstacles = document.querySelectorAll('.obstacle');
+            obstacles.forEach(obstacle => obstacle.remove());
+        }
+        
+        function resetGame() {
+            isGameOver = false;
+            score = 0;
+            scoreElement.textContent = '0';
+            gameOverElement.style.display = 'none';
+            generateObstacle();
+        }
+        
+        document.addEventListener('keyup', control);
+        generateObstacle();
+    </script>
+</body>
+</html>

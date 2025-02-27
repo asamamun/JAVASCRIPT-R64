@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+    <form action="">
+        <input type="number" name="num" id="num">
+        <input type="button" value="check Prime" onclick="checkPrime()">
+    </form>
+    <p id="result"></p>
+    <hr>
+    <img src="prime2.png" alt="" class="img-fluid">
+</div>
+    <script>
+        /**
+         * checks if a number is prime or not
+         * @param {number} n the number to check
+         * @returns {boolean} true if the number is prime, false otherwise
+         */
+        function isPrime(n){
+            for (let index = 2; index < n; index++) {
+                if(n % index === 0) return false;
+            }
+            return true;
+        }
+        function checkPrime(){
+            var n = Number(document.getElementById("num").value);
+            if(n < 2){
+                document.getElementById("result").innerHTML = "Please enter a number greater than 1";
+                return;
+            }
+            if(isPrime(n)){
+                alert(n + " is a prime number");
+            }else{
+                alert(n + " is not a prime number");
+            }
+        }
+    </script>
+</body>
+</html>

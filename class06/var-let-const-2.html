@@ -1,0 +1,13 @@
+<p>
+    In JavaScript, variables declared with var are function-scoped or globally-scoped, but not block-scoped (unlike let and const).
+</p>
+<img src="var-let-const.PNG" alt="">
+<script>
+    var x = 5;
+    function hi(){
+        var x = 10;
+        console.log("inside: " + x);
+    }
+    hi();
+    console.log("outside: " + x);
+</script>

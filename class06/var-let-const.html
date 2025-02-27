@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>var</h1>
+        <p>var keyword is used to declare a variable. normally it is used to declare a global variable. if a variable with var keyword is declared inside a code block it is called local variable and cannot be accessed outside the block </p>
+        <h1>let</h1>
+        <p>let keyword is used to declare a variable. normally it is used to declare a local variable. local variable cannot be accessed outside the block. if a variable is declared with let in global scope it is same as var</p>
+        <h1>const</h1>
+        <p>const keyword is used to declare a variable. normally it is used to declare a constant variable whose value cannot be changed</p>
+    </div>
+    <img src="var-let-const.PNG" alt="">
+    <script>
+        var x = "hi";
+        var total = 6;
+        // var ta="result: ";
+        var ta=55;
+        function add(num1, num2){
+            
+            //ta;//local variable
+            ta += total + num1 + num2;            
+        }
+        add(2, 3);
+        console.log(ta);
+        for (let i = 0; i < 11; i++) {          
+            //If a variable is redeclared inside a block (like a loop) using var, it modifies the same variable in the outer scope instead of creating a new one. 
+            var x=0;
+             x = x + i;
+            //  alert(x);
+        }
+        // console.log(i);//i cannot be accessed outside of its scope. its scope is limited to for loop
+        console.log("value of x is : "+x);// x is declared inside a for loop and can be accessed outside of its scope because it isdeclared with var keyword
+        
+    </script>
+</body>
+</html>

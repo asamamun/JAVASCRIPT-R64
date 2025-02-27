@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+        <input type="number" name="num" id="num">
+        <input type="button" value="check Prime" onclick="checkPrime()">
+    </form>
+    <p id="result"></p>
+    <h1>
+      A prime number is a natural number greater than 1 that has exactly two
+      distinct positive divisors: 1 and itself. This means it cannot be divided
+      evenly by any number other than 1 and itself. Example: 2, 3, 5, 7, 11, 13,
+      17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59
+    </h1>
+    <p>
+      Important Notes: <br />
+      2 is the only even prime number because all other even numbers are
+      divisible by 2. <br />
+      1 is NOT a prime number because it has only one divisor (itself). <br />
+      Prime numbers are the building blocks of all numbers, as every whole
+      number can be expressed as a product of primes (this is called prime
+      factorization).
+    </p>
+    <script>
+        function checkPrime(){
+            var potaka = "green";
+            var n = Number(document.getElementById("num").value);
+            if(n < 2){
+                document.getElementById("result").innerHTML = "Please enter a number greater than 1";
+                return
+            }
+            for (let index = 2; index < n; index++) {
+                if(n % index === 0){
+                    alert(n + " is not a prime number");
+                    potaka = "red";
+                    break;
+                }                
+            }
+            if(potaka === "green"){
+                alert(n + " is a prime number");
+            }
+        }
+    </script>
+  </body>
+</html>

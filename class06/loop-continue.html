@@ -1,0 +1,16 @@
+<p>this loop will print numbers 1 to 100 except 33, 66 and 99. continue statement will skip the rest of the statements for that step</p>
+<script>
+    for (let index = 1; index <= 100; index++) {
+        
+        if(index === 33 || index === 66 || index === 99){
+            continue;//skip this step
+        }   
+        console.log(index); 
+        console.log("some more statement " + index);
+        //some more statement 
+        //some more statement 
+        //some more statement
+
+    }
+    console.log("done");
+</script>

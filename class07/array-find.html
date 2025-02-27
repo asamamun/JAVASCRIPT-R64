@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="countries.js"></script>
+</head>
+<body>
+    <h3>array find example</h3>
+    <input type="text" id="countryName">
+    <input type="button" value="find" onclick="findCountryCode()">
+    <div id="result"></div>
+    <script>
+        function findCountryCode(){
+            let countryName = document.getElementById("countryName").value;
+            let countryCode = COUNTRIES.find(country => country.name == countryName);
+            //country => country.name.toLowerCase() == countryName.toLowerCase() is a callback function
+            document.getElementById("result").innerHTML = countryCode.mobileCode;
+        }
+    </script>
+</body>
+</html>

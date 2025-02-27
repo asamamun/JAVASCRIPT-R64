@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+        <div id="quotesContainer">
+
+        </div>
+    </div>
+    <script>
+        function showQuotes(data){
+            console.log(data);
+            data.quotes.forEach(element => {
+            //    console.log(element.author + " :  " + element.quote) 
+        document.getElementById("quotesContainer").innerHTML += `
+        <blockquote class="blockquote mb-0"><p> ${element.id}. ${element.quote}</p><footer class="blockquote-footer">${element.author}</footer></blockquote>
+        <hr>
+        `;    
+        });
+        }
+
+      fetch("https://dummyjson.com/quotes?limit=100&skip=200")
+        .then((res) => res.json())
+        .then((data) => showQuotes(data));
+    </script>
+  </body>
+</html>

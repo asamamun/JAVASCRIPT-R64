@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function showProducts(data){
+            console.log(data);
+            data.products.forEach(element => {
+                console.log(element.title);
+                console.log(element.price);
+            });
+        }
+        fetch('https://dummyjson.com/products')
+.then(res => res.json()) // convert to json
+// .then(res => res.text())
+.then(data => showProducts(data));//send the json data to fx showProducts
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="phonelist">
+
+    </div>
+    <img src="loop-while2.png" alt="" style="width: calc(100vw - 50px);">
+    <script>
+        var n = prompt("How many hobbies you have?");
+        var x = 0;
+        var hobbiesArr = [];
+        console.log(hobbiesArr);
+        while(x<n){
+            hobbiesArr[x] = prompt("Phone number " + x);
+            x++;
+        }
+        document.getElementById("phonelist").innerHTML = "<h3>You have " + hobbiesArr.length + " hobbies</h3>";
+        document.getElementById("phonelist").innerHTML += hobbiesArr.join("," );
+        // console.log(hobbiesArr);
+    </script>
+</body>
+</html>
