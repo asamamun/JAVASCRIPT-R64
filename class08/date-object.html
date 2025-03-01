@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>if you eant to store built in object in a variable you have to use "new" keyword. Date is a built in object. to create a date object we have to use "new" keyword. As object has properties and methods, we can use date objects properties and methods in d variable</h1>
+    <script>
+        var d = new Date();
+        console.log(d);
+        console.log(d.getDate());
+        console.log(d.getMonth());//month uses array index
+        console.log(d.getFullYear());
+        //get day
+        var day = d.getDay();// day uses array index , 0 is sunday, 1 is monday, 6 is saturday
+        console.log(day);
+        //get day name
+        var dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        //dayname in bangla
+        dayName = ["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+        console.log(dayName[day]);
+        //monthname in bangla
+        var monthName = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        console.log(monthName[d.getMonth()]);
+    </script>
+</body>
+</html>
