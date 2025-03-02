@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainee Data Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Trainee Data Form</h2>
+        <form id="traineeForm">
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <!-- Contact -->
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required><br><br>
+
+            <!-- Remarks -->
+            <label for="remarks">Remarks:</label>
+            <textarea id="remarks" name="remarks" rows="4" cols="50"></textarea><br><br>
+
+            <!-- Sex -->
+            <label>Sex:</label>
+            <input type="radio" id="male" name="sex" value="Male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="sex" value="Female" required>
+            <label for="female">Female</label><br><br>
+
+            <!-- Courses -->
+            <label>Courses:</label><br>
+            <input type="checkbox" id="nt" name="courses" value="NT">
+            <label for="nt">NT</label><br>
+            <input type="checkbox" id="iad" name="courses" value="IAD">
+            <label for="iad">IAD</label><br>
+            <input type="checkbox" id="ddd" name="courses" value="DDD">
+            <label for="ddd">DDD</label><br>
+            <input type="checkbox" id="esad" name="courses" value="ESAD">
+            <label for="esad">ESAD</label><br><br>
+
+            <!-- Location -->
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="Banani">Banani</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mirpur">Mirpur</option>
+            </select><br><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>spread operator</h1>
+    <script>
+        let x = "hello";
+        // let y = x.split("").length;//11
+        //split method split the string with certain character
+        let y = x.split("");
+        console.log(y);
+        //[Array(5), ' ', 'M', 'r']
+        let z = [...y, " ","M", "r"];
+        //['h', 'e', 'l', 'l', 'o', ' ', 'M', 'r']
+        console.log(z);
+    </script>
+    <hr>
+    <script>
+        var lot1 = ["12 apples","5 tarmujs","7 bananas"];
+        var lot2  =["2 khejurs", "8 komolas", "100 angurs"];
+        var lot3 = ["2kg boroi"];
+        // var alllots = lot1.concat(lot2,lot3);
+        var alllots = [...lot1, ...lot2, ...lot3];
+        console.log(alllots);
+        console.log(...lot3);
+    </script>
+</body>
+</html>

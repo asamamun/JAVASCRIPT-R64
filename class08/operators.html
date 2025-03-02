@@ -1,45 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  </head>
+  <body>
     <div class="container">
-    <h1>Operators can be 3 types: unary, binary and ternary operators</h1>
-    <h3>unary operators</h3>
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-primary">++: increment ex. x = x + 1 can be written as x++</li>
-        <li class="list-group-item list-group-item-primary">--: decrement ex. x = x - 1 can be written as x--</li>
-        <li class="list-group-item list-group-item-primary">typeof: returns the type of a variable. ex. typeof(x) or typeof "hello"</li>
-        <li class="list-group-item list-group-item-primary">instanceof: returns true if an object is an instance of a class, ex. x instanceof String</li>
-        <li class="list-group-item list-group-item-primary">void: returns undefined, ex. void(x)</li>
-        <li class="list-group-item list-group-item-primary">delete: deletes a property, ex. delete x.</li>
-        <li class="list-group-item list-group-item-primary">new: creates a new object. ex. new String("hello")</li>
-        <li class="list-group-item list-group-item-primary">in: returns true if a property exists in an object, ex. "name" in x</li>
-    </ul>
-    <h3>binary operators</h3>
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-info list-group-item-action">== : equal, ex. x == y</li>
-        <li class="list-group-item list-group-item-info list-group-item-action">!= : not equal. ex. x != y</li>
-        <li class="list-group-item list-group-item-info list-group-item-action">=== : strict equal, ex. x === y. it checks if the value and the type are same and returns boolean value</li>
-        <li class="list-group-item list-group-item-info list-group-item-action">!== : strict not equal. ex. x !== y. it checks if the value and the type are same and returns boolean value</li>
-        <li  class="list-group-item list-group-item-info"> > : greater than</li>
-        <li  class="list-group-item list-group-item-info"> < : less than</li>
-        <li  class="list-group-item list-group-item-info">>= : greater than or equal</li>
-        <li  class="list-group-item list-group-item-info"><= : less than or equal</li>
-        <li  class="list-group-item list-group-item-info">+= : add. ex. x += y is x= x + y</li>
-        <li  class="list-group-item list-group-item-info">-= : subtract. ex. x -= y is x= x - y</li>
-        <li  class="list-group-item list-group-item-info">*= : multiply. ex. x *= y is x= x * y</li>
-        <li  class="list-group-item list-group-item-info">/= : divide. ex. x /= y is x= x / y</li>
-        <li  class="list-group-item list-group-item-info">%= : modulus. ex. x %= y is x= x % y</li>
-    </ul>
-    <h3>ternary operators</h3>
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-success list-group-item-action">?: : ternary operator. syntax: condition ? true : false, ex: age >= 18 ? "you are eligible to vote" : "you are not eligible to vote"</li>
-    </ul>
-</div>
-</body>
+      <h1>Operators can be 3 types: unary, binary and ternary operators</h1>
+      <h3>unary operators</h3>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-primary">
+          ++: increment ex. x = x + 1 can be written as x++
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          --: decrement ex. x = x - 1 can be written as x--
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          typeof: returns the type of a variable. ex. typeof(x) or typeof
+          "hello"
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          instanceof: returns true if an object is an instance of a class, ex. x
+          instanceof String
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          void: returns undefined, ex. void(x)
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          delete: deletes a property, ex. delete x.
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          new: creates a new object. ex. new String("hello")
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          in: returns true if a property exists in an object, ex. "name" in x
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          ... : spread operator, spread the values of an array
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          ... : rest operator, get the rest of the values
+        </li>
+      </ul>
+      <h3>binary operators</h3>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info list-group-item-action">
+          == : equal, ex. x == y
+        </li>
+        <li class="list-group-item list-group-item-info list-group-item-action">
+          != : not equal. ex. x != y
+        </li>
+        <li class="list-group-item list-group-item-info list-group-item-action">
+          === : strict equal, ex. x === y. it checks if the value and the type
+          are same and returns boolean value
+        </li>
+        <li class="list-group-item list-group-item-info list-group-item-action">
+          !== : strict not equal. ex. x !== y. it checks if the value and the
+          type are same and returns boolean value
+        </li>
+        <li class="list-group-item list-group-item-info">> : greater than</li>
+        <li class="list-group-item list-group-item-info">< : less than</li>
+        <li class="list-group-item list-group-item-info">
+          >= : greater than or equal
+        </li>
+        <li class="list-group-item list-group-item-info">
+          <= : less than or equal
+        </li>
+        <li class="list-group-item list-group-item-info">
+          += : add. ex. x += y is x= x + y
+        </li>
+        <li class="list-group-item list-group-item-info">
+          -= : subtract. ex. x -= y is x= x - y
+        </li>
+        <li class="list-group-item list-group-item-info">
+          *= : multiply. ex. x *= y is x= x * y
+        </li>
+        <li class="list-group-item list-group-item-info">
+          /= : divide. ex. x /= y is x= x / y
+        </li>
+        <li class="list-group-item list-group-item-info">
+          %= : modulus. ex. x %= y is x= x % y
+        </li>
+        <li class="list-group-item list-group-item-info">
+          **: power operator x**y is x<sup>y</sup>, ex: 2**3 is 8
+        </li>
+        <li class="list-group-item list-group-item-info">
+          
+        </li>
+      </ul>
+      <h3>ternary operators</h3>
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-success list-group-item-action"
+        >
+          ?: : ternary operator. syntax: condition ? true : false, ex: age >= 18
+          ? "you are eligible to vote" : "you are not eligible to vote"
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>

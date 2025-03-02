@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>The rest operator (...) in JavaScript is used to collect multiple elements into a single variable. It works with both arrays and objects and is useful in destructuring, function parameters, and cloning.</h1>
+    <script>
+      const person = {
+        name: "Alice",
+        age: 25,
+        job: "Engineer",
+        country: "USA",
+      };
+      //spread operator
+      var runi = {...person, name:"Mst Runi"};
+      console.log(runi);
+      console.log(person);
+
+      //rest operator
+      var {age, ...rest} = person;
+      console.log(age);
+      console.log(rest);
+      //a, b, ...rest are fx parameters
+      function add(...rest) {
+        var sum = 0;
+        for (var i = 0; i < rest.length; i++) {
+          sum += rest[i];
+        }
+        console.log(sum);
+        // console.log(rest);
+      }
+      add(1, 2, 3, 4, 5);//1,2,3,4,5 are arguments
+      add(1, 2);//1,2,3,4,5 are arguments
+    </script>
+  </body>
+</html>

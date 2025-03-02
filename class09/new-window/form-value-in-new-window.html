@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="name" id="name">
+        <input type="text" name="email" id="email">
+        <input type="button" value="Submit" onclick="submitForm()">
+        
+    </form>
+    <script>
+        function submitForm(){
+           var name = document.getElementById("name").value;
+           var email = document.getElementById("email").value;
+           var newwin = window.open("","","width=400,height=400");
+           newwin.document.write("Your Name is " + name + "<br>");
+           newwin.document.write( "Your Email is " + email);
+           newwin.document.close();
+        }
+    </script>
+</body>
+</html>
