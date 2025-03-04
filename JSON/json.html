@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON means JavaScript Object Notation</h1>
+    <p>JSON is a syntax for storing and exchanging data between a server and a client</p>
+    <p>JSON is text based</p>
+    <p>JSON is a lightweight data-interchange format</p>
+    <p>JSON is easy to read and write</p>
+    <p>JSON is a subset of JavaScript</p>
+    <pre>
+        <code>
+            {
+                "name": "John",
+                "age": 30,
+                "city": "New York"
+            }
+        </code>
+    </pre>
+    <script>
+        var person = '{"name": "John","age": 30,"city": "New York"}';
+        var x = JSON.parse(person);
+        var student = {
+            "name": "John",
+            "age": 30,
+            "city": "New York",
+            "marks": {
+                "bangla": 80,
+                "english": 90,
+                "math": 95
+            }
+        };
+        console.log(x);
+        //
+        console.log(JSON.stringify(student));
+        //{"name":"John","age":30,"city":"New York","marks":{"bangla":80,"english":90,"math":95}}
+    </script>
+</body>
+</html>

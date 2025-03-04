@@ -1,0 +1,22 @@
+<script>
+    class Sochibaloy{
+        #educationsochib1;//private property starts with #
+        #roadsandhighwaysochib1;//private property starts with #
+        //to access private property use getter and setter
+        set educationsochibpiyon(edu){
+            this.#educationsochib1 = edu;
+        }
+        get educationsochibpiyon(){
+            // this.#educationsochib1 -= 50000;//set new value when we are getting old value
+            return this.#educationsochib1;
+        }
+
+    } 
+
+    let m = new Sochibaloy();
+    // m.#educationsochib1 = 700000;
+    m.educationsochibpiyon = 700000;
+    console.log(m.educationsochibpiyon);
+    console.log(m.educationsochibpiyon);
+    console.log(m.educationsochibpiyon);
+</script>

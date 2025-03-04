@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Avatar</title>
+    <link rel="stylesheet" href="avatars.css">
+</head>
+<body>
+    <div class="form-container">
+        <form id="avatarForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <label for="hairColor">Hair Color:</label>
+            <input type="color" id="hairColor" name="hairColor" value="#000000">
+
+            <label for="skinColor">Skin Color:</label>
+            <input type="color" id="skinColor" name="skinColor" value="#ffffff">
+
+            <button type="submit">Create Avatar</button>
+        </form>
+    </div>
+
+    <div id="avatarContainer" class="avatar-container"></div>
+
+    <script src="avatars.js"></script>
+</body>
+</html>

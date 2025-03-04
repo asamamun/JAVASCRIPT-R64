@@ -1,0 +1,27 @@
+function definition
+closures definition
+Java‐Script functions are closures
+Function Declarations
+Function Expressions
+Arrow Functions
+Nested Functions
+Invoking Functions
+Function Invocation
+Recursive Functions
+Method Invocation
+Method Chaining
+Constructor Invocation
+Function Arguments and Parameters
+Optional Parameters and Defaults
+Rest Parameters and Variable-Length Argument Lists
+The Arguments Object
+Destructuring Function Arguments into Parameters
+Functions as Values
+Functions as Namespaces
+Closures
+Function Properties, Methods, and Constructor
+call() and apply() Methods
+The bind() Method
+
+Higher-Order Functions
+Memoization

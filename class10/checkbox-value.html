@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hobbies:
+    <input type="checkbox" value="cricket">cricket |
+    <input type="checkbox" value="football">football |
+    <input type="checkbox" value="ludu">ludu |
+    <input type="button" value="get all values" onclick="getthem()">
+<hr>
+<h3 id="result"></h3>
+    <script>
+        function getthem() {            
+        const values = [
+  ...document.querySelectorAll('[type="checkbox"]:checked')
+].map(el => el.value);
+        document.getElementById("result").innerHTML = "You have selected:" + values;
+        }
+    </script>
+</body>
+</html>

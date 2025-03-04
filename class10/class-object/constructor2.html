@@ -1,0 +1,28 @@
+<h3>
+    when a class is called with new keyword, a new object is created. and when a news object is created, constructor is called
+</h3>
+<h3>
+    constructor is a special method(function) that is called automatically when an object is created
+</h3>
+<h3>Constructor 2 has constructor. so name need not to set individually. name will be set automatically when object is created</h3>
+<script>
+    class Person {
+        name;
+        constructor(n){ 
+            this.name = n;
+            console.log("i am called automatically");
+        }
+        show(){
+            console.log("I am "+this.name);
+        }
+    }
+    var person1 = new Person("John");
+    //Person is not object. Person is class and person1 is object which is created from Person class
+    
+    // person1.name = "John";//no need this line
+    //when a class is called with new keyword, a new object is created. and when a news object is created, constructor is called
+    person1.show();
+    var person2 = new Person("Jane");
+    // person2.name = "Jane";//no need this line
+    person2.show();
+</script>

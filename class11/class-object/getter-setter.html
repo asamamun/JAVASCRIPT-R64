@@ -1,0 +1,53 @@
+<h1>if in javascript a propery starts with _ it is called private. private property cannot be accessed outside the class</h1>
+
+<script>
+    class Person {
+        // Private properties(prefaced with #)
+        #name;
+        #age;
+    constructor(name, age) {
+        this.#name = name;  // Using underscore (_) to indicate a private property
+        this.#age = age;
+    }
+
+    // Getter for name
+    get n() {
+        return this.#name;
+    }
+    // Setter for name
+    set n(newName) {
+        if (newName.length > 0) {
+            this.#name = newName;
+        } else {
+            console.log("Name cannot be empty!");
+        }
+    }
+
+    // Getter for age
+    get a() {
+        return this.#age;
+    }
+
+    // Setter for age (with validation)
+    set a(newAge) {
+        if (newAge > 0) {
+            this.#age = newAge;
+        } else {
+            console.log("Age must be a positive number!");
+        }
+    }
+}
+//person class ends
+//person class object starts
+const person1 = new Person("Alice", 25);
+//console.log("name:" + person1.#name);//Property '#name' is not accessible outside class 'Person' because it has a private identifier.
+
+console.log(person1.n);  // Alice (Getter called)
+person1.n = "Bob";       // Setter called
+console.log(person1.n);  // Bob
+
+console.log(person1.a);   // 25
+person1.a = -5;           // Invalid value, prints "Age must be a positive number!"
+console.log(person1.a);   // 25 (unchanged)
+
+</script>

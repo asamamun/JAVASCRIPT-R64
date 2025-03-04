@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="productContainer">
+  
+        </div>
+    </div>
+    <script>
+        function showProducts(p){
+            console.log(p);
+            p.products.forEach(product => {
+              document.getElementById("productContainer").innerHTML += `
+                        <div class="card col-md-3">
+                <img src="${product.thumbnail}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${product.title}</h5>
+                  <p class="card-text">${product.description}</p>
+                  <p class="card-text">${product.price}</p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+              </div>`;  
+            });
+        }
+
+        fetch('https://dummyjson.com/products')
+        .then(res => res.json())
+        // .then(data => console.log(data.products))
+        .then(data => showProducts(data))
+    </script>
+</body>
+</html>

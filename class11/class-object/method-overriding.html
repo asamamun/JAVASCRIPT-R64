@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Method Overriding: method of child class can override the method of parent class.</h3>
+    <p>for example:gotoinstitute in UniversityStudent child class is overriding gotoinstitute in Student parent class</p>
+    <p>if child class does not override the method of parent class then it will call the method of parent class. for example: gotoinstitute in PrimaryStudent child class is not overriding gotoinstitute in Student parent class</p>
+    <script>
+        class Student {
+            gotoinstitute() {
+                console.log("going to institute with my parents");
+            }
+        }
+        class PrimaryStudent extends Student {
+            
+        }
+        class UniversityStudent extends Student {
+            //method overriding
+            gotoinstitute() {
+                console.log("going to institute with my friends");
+            }
+        }
+        var p = new PrimaryStudent();
+        p.gotoinstitute();// no method overriding
+        var u = new UniversityStudent();
+        u.gotoinstitute();// method overriding
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>inheritance: child class can inherit properties and methods from parent class using <code>extends</code> keyword</h3>
+    <div>
+        <code>
+            <pre>
+                class Student{
+                    name;
+                    roll;
+                    classname;
+                    bg;                    
+                }
+                class SSC_student extends Student{
+                    section;
+                    shift;
+                }
+                class HSC_student extends Student{
+                    section;
+                    shift;
+                }
+            </pre>
+        </code>
+        
+        
+    </div>
+    <h3>super() is a function that calls the constructor of the parent class. In JavaScript, when you use class inheritance (extends), the child class must call super() inside its constructor before accessing <code>this</code>.</h3>
+    <div>
+        <code>
+            <pre>
+Why is super() Required?
+The super() function executes the parent class constructor.
+The this keyword is not available in a child class until super() has been called.
+If you don’t call super(), JavaScript throws the error:
+"Must call super constructor in derived class before accessing 'this' or returning from derived constructor".
+            </pre>
+        </code>
+    </div>
+    <script>
+        class Student{
+            //constructor
+            constructor(){
+                console.log("i am called automatically from parent class");
+            }
+            //properties
+            name;
+            roll;
+            classname;
+            bg;
+            section;
+            shift;
+            //methods
+            study(hour){ console.log(`${this.name} am studying ${hour} hours`); }
+            play(hour){ console.log(`${this.name} am playing ${hour} hours`); }
+            sleep(hour){ console.log(`${this.name} am sleeping ${hour} hours`); }
+
+        }
+        class PrimaryStudent extends Student{
+            //constructor
+            constructor(){
+                console.log("i am called automatically from child class");
+                super(); //using super keyword Calling the parent class constructor
+                
+            }
+            //properties
+            section;
+            shift;
+            mothername;
+            fathername;
+            address;
+            //methods
+        }
+        var ayra = new PrimaryStudent();
+        ayra.address= "Chittagong";
+        ayra.roll = 123;
+        ayra.name = "Ayra";
+        ayra.classname = "Primary";
+        ayra.section = "A";
+        ayra.shift = "Day";
+        ayra.mothername = "Fatema";
+        ayra.fathername = "Abu";
+        ayra.study(2);
+        ayra.play(5);
+        ayra.sleep(10);
+        // ayra.adda(44);
+
+
+        class UniversityStudent extends Student{
+            prem(h){
+                console.log(`${this.name} am preming ${h} hours`);
+            }
+            adda(h){
+                console.log(`${this.name} am giving adda ${h} hours`);
+            }
+        }
+        var rajon = new UniversityStudent();
+        rajon.name = "Rajon";//name was the property of parent class Student
+        rajon.adda(5);// play was the method of parent class Student
+        rajon.prem(0);// play was the method of parent class Student
+
+    </script>
+</body>
+</html>

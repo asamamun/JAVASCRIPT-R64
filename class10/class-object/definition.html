@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+  </head>
+  <body>
+    <h3>ECMAScript 2015, also known as ES6, introduced JavaScript Classes.</h3>
+    <h4>Class: JavaScript Classes are templates for JavaScript Objects.</h4>
+    <hr>
+    <h3>How to create class in javascript</h3>
+    <pre>
+        <code>
+            example 1: class className {
+                
+              }
+
+            example 2: class className {
+                constructor(x, y) {
+                    this.name = x;
+                    this.age = y;
+                  }
+            }  
+        </code>
+    </pre>
+    <h3>Objects: Instances/example of a class. objects are created using new keyword</h3>
+    <h3>Constructor: special method(function) that is called when an object is created</h3>
+    <script src="wdpf.class.js"></script>
+    <script>
+        let student1 = new Wdpf();
+        let student2 = new Wdpf();
+        let student3 = new Wdpf();
+        student1.name = "John";
+        student1.age = 30;
+        student2.name = "Jane";
+        student2.age = 25;
+        student3.name = "Bob";
+        student3.age = 20;
+        let wdpf = [student1, student2, student3];
+        let m = [55, "MM", {x:55,y:7}];
+        console.log(wdpf);
+        console.log(m);
+    </script>
+  </body>
+</html>

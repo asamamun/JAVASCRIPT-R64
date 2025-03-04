@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive TV</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .tv-container { display: inline-block; text-align: center; margin-top: 20px; }
+        .tv { border: 5px solid black; display: flex; align-items: center; justify-content: center; 
+              background-color: black; color: white; font-size: 20px; }
+        .remote { display: inline-block; margin-left: 20px; padding: 10px; border: 2px solid black; }
+        button { display: block; margin: 10px; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Set Up Your TV</h2>
+    <form id="tvForm">
+        Size: <input type="number" id="size" value="50"> inches <br>
+        Color: <input type="text" id="color" value="black"> <br>
+        Brand: <input type="text" id="brand" value="Generic"> <br>
+        <button type="button" onclick="setupTV()">Set TV</button>
+    </form>
+    
+    <div class="tv-container">
+        <div id="tvScreen" class="tv" style="width: 200px; height: 120px;">TV OFF</div>
+        <div class="remote">
+            <button onclick="tv.turnOn()">Power On</button>
+            <button onclick="tv.turnOff()">Power Off</button>
+            <button onclick="tv.volumeUp()">Volume +</button>
+            <button onclick="tv.volumeDown()">Volume -</button>
+            <button onclick="changeChannel()">Change Channel</button>
+        </div>
+    </div>
+    
+    <script>
+        class TV {
+            constructor(size, color, brand) {
+                this.size = size;
+                this.color = color;
+                this.brand = brand;
+                this.power = false;
+                this.channel = 0;
+                this.volume = 50;
+                document.getElementById("tvScreen").style.backgroundColor = color;
+            }
+            turnOn() {
+                this.power = true;
+                document.getElementById("tvScreen").innerText = `${this.brand} TV is ON`;
+                console.log("TV is on");
+            }
+            turnOff() {
+                this.power = false;
+                document.getElementById("tvScreen").innerText = "TV OFF";
+                console.log("TV is off");
+            }
+            volumeUp() {
+                this.volume++;
+                console.log("Volume: " + this.volume);
+            }
+            volumeDown() {
+                this.volume--;
+                console.log("Volume: " + this.volume);
+            }
+            changeChannel(num) {
+                this.channel = num;
+                document.getElementById("tvScreen").innerText = `Channel: ${num}`;
+                console.log("Channel changed to: " + num);
+            }
+        }
+        
+        let tv = new TV(32, "green", "Generic");
+        
+        
+        function setupTV() {
+            let size = document.getElementById("size").value;
+            let color = document.getElementById("color").value;
+            let brand = document.getElementById("brand").value;
+            tv = new TV(size, color, brand);
+            document.getElementById("tvScreen").style.width = size * 4 + "px";
+            document.getElementById("tvScreen").style.height = size * 2.5 + "px";
+            document.getElementById("tvScreen").style.backgroundColor = color;
+        }
+        
+        function changeChannel() {
+            let channel = prompt("Enter Channel Number:");
+            if (channel) tv.changeChannel(channel);
+        }
+    </script>
+</body>
+</html>
