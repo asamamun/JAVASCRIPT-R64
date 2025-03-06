@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to ASCII Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            word-wrap: break-word;
+            min-height: 50px;
+            cursor: pointer;
+        }
+        #result:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>String to ASCII Converter</h2>
+        <textarea id="input" placeholder="Enter your text here..."></textarea>
+        <div class="buttons">
+            <button onclick="encode()">Encode</button>
+            <button onclick="decode()">Decode</button>
+        </div>
+        <div id="result" onclick="copyToClipboard()">Click to copy result</div>
+    </div>
+
+    <script>
+        function encode() {
+            const input = document.getElementById('input').value;
+            let result = '';
+            for (let i = 0; i < input.length; i++) {
+                result += input.charCodeAt(i) + ' ';
+            }
+            document.getElementById('result').textContent = result.trim();
+        }
+
+        function decode() {
+            const input = document.getElementById('input').value;
+            const numbers = input.split(' ').filter(num => num !== '');
+            let result = '';
+            for (let num of numbers) {
+                const charCode = parseInt(num);
+                if (!isNaN(charCode)) {
+                    result += String.fromCharCode(charCode);
+                }
+            }
+            document.getElementById('result').textContent = result;
+        }
+
+        function copyToClipboard() {
+            const result = document.getElementById('result').textContent;
+            navigator.clipboard.writeText(result)
+                .then(() => {
+                    alert('Copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    </script>
+</body>
+</html>

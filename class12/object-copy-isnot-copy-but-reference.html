@@ -1,0 +1,23 @@
+<pre>
+    <code>
+Initialized chextloader at: 1741152776313
+let x = 5;
+
+let y= x;
+
+y = 7;
+
+x;//5
+x=88;//88
+y//7
+let o = {a:5,b:6};
+let p = o; //referenced, not copied
+p.a = 9;
+o.a // 9
+o //{a: 9, b: 6}
+var st = [5,6,7];
+var fst = st; //referenced, not copied
+fst[0] = 77;
+st; //(3) [77, 6, 7]
+    </code>
+</pre>

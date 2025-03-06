@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>there are 5 techniques to validate email(with @ and .). apply any one of them for evidence</h3>
+    <script>
+        var email = prompt("Enter your email");// this is a string
+/*         // tech 1
+        if(email && email.includes("@") && email.includes(".")){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        } */
+/*         // tech 2
+        let atcheck = email.indexOf("@");
+        let dotcheck = email.indexOf(".");
+        if(atcheck > 0 && dotcheck > 0 && atcheck < dotcheck){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        } */
+/*         // tech 3 with regular expression
+        const emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
+        if(emailPattern.test(email)){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        } */
+/*         // tech 4 with regular expression
+        const emailPattern = /^.+@.+\..+$/;
+        if(emailPattern.test(email)){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        } */
+/*         // tech 5
+        let atcheck = email.indexOf("@");
+        let dotcheck = email.indexOf(".");
+        if(atcheck != -1 && dotcheck != -1 && atcheck < dotcheck){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        } */
+    </script>
+</body>
+</html>

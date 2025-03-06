@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var g = prompt("your gender, male or female?");
+        var a = Number(prompt("your age in number"));
+        document.write(g == "male" && a > 18);// g==male (A) && a>18 (B) 
+        /*
+        A   B = A && B
+        0   0 = false/0
+        0   1 = false/0
+        1   0 = false/0
+        1   1 = true/1
+        */
+    </script>
+</body>
+</html>

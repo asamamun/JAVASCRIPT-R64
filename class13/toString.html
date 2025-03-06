@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>3.9 Type Conversions: check source and console for details</h1>
+    <h3>Table 3-2. JavaScript type conversions is very important to understand type conversion in JavaScript</h3>
+</body>
+</html>
+<script>
+    var x = 5; //number
+    var y = x.toString(); //"5" //converted from number to string
+    console.log(x  + " : " + typeof x);
+    console.log(y + " : " + typeof y);
+    let n = "A"/5; //NaN
+    console.log(typeof n);// NaN's data type is number
+    if(n){
+        console.log(n + " is true");
+    }
+    else{
+        console.log(n + " is false");
+    }
+    let res = false;
+    console.log(res + " : " + Number(res));// false : 0 if converted to number
+    let em = "";
+    if(em){
+        console.log(em + " is true");
+    }
+    else{
+        console.log(em + " is false");
+    }
+
+</script>

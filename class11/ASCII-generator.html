@@ -1,0 +1,13 @@
+<input type="text" id="input" onblur="generate()">
+<div id="output"></div>
+<script>
+    //"Bangladesh".split("").forEach((e,i)=> console.log(e.charCodeAt(0)))
+    function generate() {
+        let input = document.getElementById("input").value;
+        let output = "";
+        for (let i = 0; i < input.length; i++) {
+            output +="ASCII value of " + input.charAt(i) + " is " +input.charCodeAt(i) + "<br> ";
+        }
+        document.getElementById("output").innerHTML = output;
+    }
+</script>

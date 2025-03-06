@@ -1,0 +1,20 @@
+<h3>Important about and(&&) operator</h3>
+<pre>
+The && (logical AND) operator returns the first falsy value it encounters.
+<b> If all values are truthy, it returns the last value.</b>
+If x && 5 returned true, then x would be assigned true, which isn't how && works. Instead of returning true or false, && returns actual values based on logical evaluation.
+<code>
+let a = 100 && 5;  // a = 5 (because both are truthy, returns last value)
+let b = 0 && 5;    // b = 0 (because 0 is falsy, returns first falsy value)
+let c = true && 5; // c = 5 (because both are truthy, returns last value)
+console.log(a,b,c);// 5 0 5
+</code>
+</pre>
+
+<script>
+let a = 100 && 5;  // a = 5 (because both are truthy, returns last value)
+let b = 0 && 5;    // b = 0 (because 0 is falsy, returns first falsy value)
+let c = true && 5; // c = 5 (because both are truthy, returns last value)
+console.log(a,b,c);
+
+</script>

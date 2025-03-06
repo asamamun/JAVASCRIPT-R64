@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
+        /*
+        ^[^@]+ - Starts with one or more characters that aren’t @ (the username).
+        @ - The single @ separator.
+        [^@]+ - Domain part, no @ allowed.
+        \. - The dot.
+        [^@]+ - TLD, no @ allowed.
+        */
+        const emailPattern = /^.+@.+\..+$/;
+        /*
+        .+ - One or more of any character (including @, spaces, etc.).
+        @ - Literal @.
+        .+ - Any characters for the domain.
+        \. - Literal dot.
+        .+ - Any characters for the TLD.
+        */
+        var email = prompt("Enter your email");
+        if(emailPattern.test(email)){
+            alert("Email is valid");
+        }
+        else{
+            alert("Email is not valid");
+        }
+    </script>
+</body>
+</html>
