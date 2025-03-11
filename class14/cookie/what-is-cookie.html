@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Definition</title>
+    <script src="cookie.js"></script>
+</head>
+<body>
+   <h1 id="heading">What are javascript cookies?</h1>
+    <hr>
+    <h3>Normally web is stateless but cookies/web storage make the web site stateful</h3>
+    
+   <p id="c1">Cookies are small text files that are stored on the user's computer when they visit a website.</p>
+   <p id="c2">They are used to remember information about the user, such as their preferences, login status, language preferences, currency preferences and other settings.</p>
+   <p id="c3">They are also used to track and analyze website usage, such as page views and user behavior.</p>
+   <hr>
+   <div>
+    <fieldset>
+        <legend id="legend"></legend>
+        <a href="javascript:void(0)" onclick="changeLanguage('bn')">Bangla</a> |
+    <a href="javascript:void(0)" onclick="changeLanguage('en')">English</a> |
+    <a href="javascript:void(0)" onclick="changeLanguage('hi')">Hindi</a> |
+    <a href="javascript:void(0)" onclick="changeLanguage('ar')">Arabic</a>
+    </fieldset>
+    
+   </div>
+   <script>
+    var lang = {
+    'en': {
+        heading: 'What are JavaScript cookies?',
+        c1: 'Cookies are small text files that are stored on the user\'s computer when they visit a website.',
+        c2: 'They are used to remember information about the user, such as their preferences, login status, language preferences, currency preferences, and other settings.',
+        c3: 'They are also used to track and analyze website usage, such as page views and user behavior.',
+        legend: "Select Your Language"
+    },
+    'bn': {
+        heading: 'জাভাস্ক্রিপ্ট কুকিজ কি?',
+        c1: 'কুকিজ হল ছোট টেক্সট ফাইল যা ব্যবহারকারীর কম্পিউটারে সংরক্ষিত হয় যখন তারা একটি ওয়েবসাইট পরিদর্শন করে।',
+        c2: 'এগুলি ব্যবহারকারীর তথ্য যেমন তাদের পছন্দ, লগইন অবস্থা, ভাষার পছন্দ, মুদ্রার পছন্দ এবং অন্যান্য সেটিংস মনে রাখার জন্য ব্যবহৃত হয়।',
+        c3: 'এগুলি ওয়েবসাইটের ব্যবহার বিশ্লেষণ এবং ট্র্যাক করার জন্যও ব্যবহৃত হয়, যেমন পৃষ্ঠার দর্শন এবং ব্যবহারকারীর আচরণ।',
+        legend: "আপনার ভাষা নির্বাচন করুন"
+
+    },
+    'hi': {
+        heading: 'जावास्क्रिप्ट कुकीज़ क्या हैं?',
+        c1: 'कुकीज़ छोटे टेक्स्ट फ़ाइलें होती हैं जो उपयोगकर्ता के कंप्यूटर पर संग्रहीत होती हैं जब वे किसी वेबसाइट पर जाते हैं।',
+        c2: 'इन्हें उपयोगकर्ता की जानकारी जैसे कि उनकी प्राथमिकताएँ, लॉगिन स्थिति, भाषा प्राथमिकताएँ, मुद्रा प्राथमिकताएँ और अन्य सेटिंग्स याद रखने के लिए उपयोग किया जाता है।',
+        c3: 'इनका उपयोग वेबसाइट उपयोग की निगरानी और विश्लेषण करने के लिए भी किया जाता है, जैसे पृष्ठ दृश्य और उपयोगकर्ता व्यवहार।',
+        legend: "आपका भाषा चुनें"
+
+    },
+    'ar': {
+        heading: 'ما هي ملفات تعريف الارتباط في جافا سكريبت؟',
+        c1: 'ملفات تعريف الارتباط هي ملفات نصية صغيرة يتم تخزينها على جهاز الكمبيوتر الخاص بالمستخدم عند زيارة موقع ويب.',
+        c2: 'تُستخدم لتذكر معلومات المستخدم، مثل تفضيلاته، وحالة تسجيل الدخول، وتفضيلات اللغة، وتفضيلات العملة، والإعدادات الأخرى.',
+        c3: 'يتم استخدامها أيضًا لتتبع وتحليل استخدام الموقع، مثل عدد مرات مشاهدة الصفحات وسلوك المستخدم.',
+        legend: "حدد لغتك"
+    }
+};
+
+
+    
+    function changeLanguage(l){
+        // document.cookie = `lang=${l}`;
+        setCookie('lang', l,1);//1 day
+        language = l;//l can be bn, en, hi, ar
+        document.getElementById('heading').innerHTML = lang[language]['heading'];//lang['en']['heading']//lang['bn']['heading']//lang['hi']['heading']//lang['ar']['heading']
+        document.getElementById('c1').innerHTML = lang[language]['c1'];
+        document.getElementById('c2').innerHTML = lang[language]['c2'];
+        document.getElementById('c3').innerHTML = lang[language]['c3'];
+        document.getElementById('legend').innerHTML = lang[language]['legend'];
+         console.log(document.cookie);//   document.cookie
+    }
+    
+
+//this function will run on page load
+(function(){changeLanguage(getCookie('lang') || 'bn');})();
+          </script>
+
+
+</body>
+</html>

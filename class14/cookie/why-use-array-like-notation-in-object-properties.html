@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>why use array like notation in object properties</h1>
+    <script>
+      var obj = {
+        name: "John",
+        age: 30,
+        city: "New York",
+        a: "johnny",
+      };
+      var a = "name";
+      console.log(obj[a]); //john
+      console.log(obj.a); //john//undefined
+      console.log(obj["age"]); //30
+      console.log(obj.age); //30
+      console.log(obj["city"]); //new york
+    </script>
+  </body>
+</html>
