@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>What you want to do today?</h3>
+    <input type="text" id="todo" />
+    <button onclick="addTodo()">add</button>
+    <hr />
+    <div id="todoList"></div>
+    <script>
+      function addTodo() {
+        var todo = document.getElementById("todo").value;
+        if (localStorage.getItem("mytodos") == null) {
+          localStorage.setItem("mytodos", todo);
+        } else {
+          todo = localStorage.getItem("mytodos") + "," + todo;
+          localStorage.setItem("mytodos", todo);
+        }
+
+        show();
+      }
+
+      function show() {
+        var todoList = document.getElementById("todoList");
+        todoList.innerHTML = "";
+        let alltodos = localStorage.getItem("mytodos");
+        alltodos.split(",").forEach((e) => {
+          todoList.innerHTML += `<li>${e}</li>`;
+        });
+      }
+      show();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            display: inline-block;
+            width:150px;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- registration.php?name=&email=&division=&password=&repass= -->
+     <!-- registration.php?name=AA&email=asdfdsf%40gmail.com&division=&password=&repass= -->
+    <div id="errorDiv" class="red">
+
+    </div>
+     <form name="regForm" action="registration.php" method="get">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name"><br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email"><br>
+        <label for="division">Division: </label>
+        <input type="text" name="division" id="division"><br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password"><br>
+        <label for="repass">Retype Password: </label>
+        <input type="password" name="repass" id="repass"><br>
+        <input type="submit" value="Submit" onclick="check(event)">
+    </form>
+
+    <script>
+        function check(e){
+            document.getElementById("errorDiv").innerHTML = "";
+            let error = [];
+            //preventDefault prevents the default behaviour
+            e.preventDefault();
+            let n = document.getElementById("name").value;
+            let em = document.getElementById("email").value;
+            let div = document.getElementById("division").value;
+            let pass = document.getElementById("password").value;
+            let repass = document.getElementById("repass").value;
+if(n.length <=3){
+    error.push("Name must be at least 4 characters long");
+}
+if(em.indexOf("@") === -1){
+    error.push("Email must contain @ symbol");
+}
+if(div.length === 0){
+    error.push("Division name cannot be empty");
+}
+if( pass.length === 0 ||  repass.length === 0){
+    error.push("password and retypr password cannot be empty");
+}
+if(pass !== repass){
+    error.push("not same");
+}
+if(error.length){
+//show the errors
+error.forEach(error => {
+    document.getElementById("errorDiv").innerHTML += `<li>${error}</li>`;
+});
+}
+else{
+    //form submit
+    //registration.php?name=isdb&email=idnb%40gmail.com&division=dhaka&password=123&repass=123
+// document.regForm.submit();
+let w = window.open("","","width=400px;height=400px");
+w.document.write("User name: " + n + "<br>");
+w.document.write("User email: " + em + "<br>");
+//baki gula dekhan
+}
+            
+        }
+    </script>
+</body>
+</html>

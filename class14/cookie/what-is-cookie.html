@@ -63,7 +63,7 @@
     
     function changeLanguage(l){
         // document.cookie = `lang=${l}`;
-        setCookie('lang', l,1);//1 day
+        setCookie('lang', l,5);//1 day
         language = l;//l can be bn, en, hi, ar
         document.getElementById('heading').innerHTML = lang[language]['heading'];//lang['en']['heading']//lang['bn']['heading']//lang['hi']['heading']//lang['ar']['heading']
         document.getElementById('c1').innerHTML = lang[language]['c1'];
@@ -75,7 +75,8 @@
     
 
 //this function will run on page load
-(function(){changeLanguage(getCookie('lang') || 'bn');})();
+(function(){changeLanguage(getCookieGPT('lang') || 'bn');})();
+(function(){getCookieGPT('_cb')})();
           </script>
 
 

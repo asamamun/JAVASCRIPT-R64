@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>you can get the values of an array using for of loop</h1>
+    <h1>you can get the index of an array using for in loop</h1>
+    <script>
+        let colors = ["red", "green", "blue", "yellow"];
+        // for(let variableName of arrayName){
+        //you can access variableName here 
+        // }
+        for (let c of colors) {
+            alert(c);// red, green, blue, yellow
+        }
+        for (const k in colors) {
+            alert(colors[k]);// 0,1,2,3
+        }
+    </script>
+</body>
+</html>

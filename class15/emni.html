@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="">Contact</label>
+        <input type="text" name="contact" id="contact"><br>
+        <label for="">Remark</label>
+        <textarea name="remark" id="remark"></textarea><br>
+        <label for="">Sex</label>
+        <input type="radio" name="sex" id="male" value="Male">Male 
+        <input type="radio" name="sex" id="female" value="Female"> Female<br>
+        <label for="">Course</label>
+        <input type="checkbox" name="course" id="course" value="NT">NT
+        <input type="checkbox" name="course" id="course" value="DDD">DDD
+        <input type="checkbox" name="course" id="course" value="WDPF">WDPF
+        <input type="checkbox" name="course" id="course" value="JEE">JEE <br>
+        <label for="">Location</label>
+        <select name="location" id="location">
+            <option value="Dhanmondi">Dhanmondi</option>
+            <option value="Mirpur">Mirpur</option>
+            <option value="Shyamoli">Shyamoli</option>
+        </select><br>
+        <label for=""></label>
+        <button type="submit" id="submit" onclick="ajaira(event)">Submit</button>
+    </form>
+
+
+
+    <script>
+        function ajaira(e) {
+            e.preventDefault();
+            
+            // alert("nothing")
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var remark = document.getElementById("remark").value;
+            var sexelement = document.querySelector('input[name="sex"]:checked');
+            var sex = sexelement ? sexelement.value : "Hudai";
+            var course = document.getElementsByName("course");
+            var selected = [];
+            for (var i = 0; i < course.length; i++) {
+            if (course[i].checked) {
+                selected.push(course[i].value);
+            }
+            
+        }
+        // console.log(selected);
+
+            var nai = `<h1>Information</h1>
+<p>name:${name}</p>
+<p>contact:${contact}</p>
+<p>remark:${remark}</p>
+<p>Courses: ${selected}
+<p>sex:${sex}</p>`;
+            var newwin = window.open('','','width=400,height=600');
+            newwin.document.write(nai)
+
+        }
+    </script>
+
+    
+    </body>
+</html>

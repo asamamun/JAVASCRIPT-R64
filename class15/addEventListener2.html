@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 3px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div>click me 1</div>
+    <div>click me 2</div>
+    <div>click me 3</div>
+    <div>click me 4</div>
+    <div>click me 5</div>
+        <script>
+            let divs = document.getElementsByTagName("div");
+            for(let i=0; i < divs.length; i++){
+                divs[i].addEventListener("click",function(){
+                console.log(this);
+                this.innerHTML = "thank you"
+            })
+            }
+ 
+        </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 3px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <h3>this means current object. this means that one with which you are working </h3>
+    <div onclick="clickme(this)">click me 1</div>
+    <div onclick="clickme(this)">click me 2</div>
+    <div onclick="clickme(this)">click me 3</div>
+    <div onclick="clickme(this)">click me 4</div>
+    <div onclick="clickme(this)">click me 5</div>
+    <hr>
+    <input type="text" onblur="sq(this)" size="90" onfocus="sevenminit(this)" style="padding: 10px;">
+    <script>
+    function clickme(t){
+        console.log(t);
+        t.innerHTML = "thank you";
+    }
+
+    function sq(t){
+        console.log(t.value);
+        t.value = t.value * t.value;
+    }
+
+    function sevenminit(t){
+        t.value = "";
+    }
+    </script>
+</body>
+</html>

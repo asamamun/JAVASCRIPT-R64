@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let c = "username=JohnDoe; theme=dark; sessionId=abc123"
+        let values = c.split("; ")
+        console.log(values);
+        for(let i = 0; i < values.length; i++){
+            let pair = values[i].split("=");
+            console.log(pair);
+        }
+
+        function getCookie(name) {
+    let cookies = document.cookie.split("; ");
+    for (let cookie of cookies) {
+        let [key, value] = cookie.split("=");
+        if (key === name) return value;
+    }
+    return null; // Return null if the cookie is not found
+}
+    </script>
+</body>
+</html>
