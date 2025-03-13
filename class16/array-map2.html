@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="colorContainer"></div>
+    <script>
+        let colorArray = ["red", "green", "blue", "yellow", "black", "white", "gray", "pink"];
+        let colorContainer = document.getElementById("colorContainer");
+/*         for (let index = 0; index < colorArray.length; index++) {
+            colorContainer.innerHTML += `<div style="background-color: ${colorArray[index]}; width: 50px; height: 50px; display: inline-block; margin: 10px;"></div>`            
+        } */
+        let newArrList = colorArray.map(n=>`<li>${n}</li>`);
+        let newArrHeading = colorArray.map(n=>`<h1>${n}</h1>`);
+        let optionsInSelect = colorArray.map(n=>`<option>${n}</option>`);
+        console.log(newArrList);
+        console.log(newArrHeading);
+        console.log(optionsInSelect);
+        document.getElementById("colorContainer").innerHTML = "<select>" + optionsInSelect.join("") + "</select>";
+    </script>
+</body>
+</html>

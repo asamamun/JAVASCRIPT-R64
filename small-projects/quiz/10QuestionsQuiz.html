@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .correct { color: green; }
+        .wrong { color: red; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="quiz"></div>
+        <button onclick="showResult()">Finish Quiz</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // const questions = [
+        //     {
+        //         question: "What is the capital of France?",
+        //         options: ["London", "Berlin", "Paris", "Madrid"],
+        //         correct: 2
+        //     },
+        //     {
+        //         question: "Which planet is closest to the Sun?",
+        //         options: ["Venus", "Mars", "Mercury", "Earth"],
+        //         correct: 2
+        //     },
+        //     // Add 8 more questions following the same format
+        //     {
+        //         question: "What is 2 + 2?",
+        //         options: ["3", "4", "5", "6"],
+        //         correct: 1
+        //     }
+        // ];
+        const questions = [
+    {
+        question: "What is the correct way to declare a JavaScript variable?",
+        options: ["var myVar;", "variable myVar;", "v myVar;", "let: myVar;"],
+        correct: 0
+    },
+    {
+        question: "Which keyword is used to define a constant variable in JavaScript?",
+        options: ["var", "let", "const", "constant"],
+        correct: 2
+    },
+    {
+        question: "What is the output of typeof null?",
+        options: ["null", "undefined", "object", "number"],
+        correct: 2
+    },
+    {
+        question: "Which method converts a JSON string into a JavaScript object?",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()", "JSON.objectify()"],
+        correct: 0
+    },
+    {
+        question: "Which built-in function removes the last element from an array and returns it?",
+        options: ["shift()", "pop()", "push()", "splice()"],
+        correct: 1
+    },
+    {
+        question: "What does the '===' operator do in JavaScript?",
+        options: ["Checks for equality in value", "Checks for equality in value and type", "Assigns a value", "Compares references"],
+        correct: 1
+    },
+    {
+        question: "How do you write a comment in JavaScript?",
+        options: ["<!-- This is a comment -->", "// This is a comment", "/* This is a comment */", "Both 2 and 3"],
+        correct: 3
+    },
+    {
+        question: "Which function is used to schedule a function call after a delay?",
+        options: ["setTimeout()", "setInterval()", "delay()", "wait()"],
+        correct: 0
+    },
+    {
+        question: "What is the output of '5' + 3 in JavaScript?",
+        options: ["8", "53", "Error", "undefined"],
+        correct: 1
+    },
+    {
+        question: "Which symbol is used for single-line comments in JavaScript?",
+        options: ["//", "/*", "--", "#"],
+        correct: 0
+    },
+    {
+        question: "Which method is used to find the length of an array?",
+        options: ["size", "count", "length", "getSize"],
+        correct: 2
+    },
+    {
+        question: "Which of the following is a JavaScript framework?",
+        options: ["Laravel", "React", "Django", "Flask"],
+        correct: 1
+    },
+    {
+        question: "What is the correct way to write an arrow function?",
+        options: ["function => {}", "()=>{}", "function() => {}", "->{}"],
+        correct: 1
+    },
+    {
+        question: "How do you declare an asynchronous function in JavaScript?",
+        options: ["async function myFunc() {}", "function async myFunc() {}", "await function myFunc() {}", "async: function myFunc() {}"],
+        correct: 0
+    },
+    {
+        question: "Which event is triggered when an HTML element is clicked?",
+        options: ["onmouseover", "onchange", "onclick", "onsubmit"],
+        correct: 2
+    },
+    {
+        question: "What is the purpose of the JavaScript map() function?",
+        options: ["Modify an object", "Create a new array by applying a function", "Filter an array", "Sort an array"],
+        correct: 1
+    },
+    {
+        question: "Which operator is used to check if a value is not equal in JavaScript?",
+        options: ["!=", "!==", "Both 1 and 2", "==!"],
+        correct: 2
+    },
+    {
+        question: "How do you stop an interval set by setInterval()?",
+        options: ["clearInterval()", "stopInterval()", "clearTimeout()", "cancelInterval()"],
+        correct: 0
+    },
+    {
+        question: "Which of the following is a falsy value in JavaScript?",
+        options: ["true", "1", "'false'", "0"],
+        correct: 3
+    },
+    {
+        question: "Which method is used to convert a JavaScript object to a JSON string?",
+        options: ["JSON.parse()", "JSON.stringify()", "toJSON()", "stringifyJSON()"],
+        correct: 1
+    }
+];
+
+
+        let quizHtml = '';
+        questions.forEach((q, index) => {
+            quizHtml += `
+                <div class="question">
+                    <h3>${index + 1}. ${q.question}</h3>
+                    <div class="options">
+                        ${q.options.map((option, i) => `
+                            <label>
+                                <input type="radio" name="q${index}" value="${i}">
+                                ${option}
+                            </label><br>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('quiz').innerHTML = quizHtml;
+
+        function showResult() {
+            let score = 0;
+            let resultHtml = '<h2>Results:</h2>';
+            
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const isCorrect = selected && parseInt(selected.value) === q.correct;
+                
+                if (isCorrect) score++;
+                
+                resultHtml += `
+                    <div class="${isCorrect ? 'correct' : 'wrong'}">
+                        <strong>Question ${index + 1}:</strong> ${q.question}<br>
+                        Correct answer: ${q.options[q.correct]} <br>
+                        Your answer: ${selected ? q.options[parseInt(selected.value)] : 'None'} <br>
+                        ${isCorrect ? 'Correct' : 'Wrong'}
+                    </div>
+                `;
+            });
+
+            resultHtml = `<h3>Your Score: ${score}/${questions.length}</h3>` + resultHtml;
+            document.getElementById('result').innerHTML = resultHtml;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<script>
+    // let x = [,,,,,,,,,,];
+    let x = new Array(100);
+    x.fill(0,9,-2);
+    console.log(x);
+    let a = [0,1,2,1,0];
+    console.log(a.indexOf("@"));//-1 
+    console.log(a.indexOf("."));//-1 
+
+    //you can convert string to array
+    let idb = "Islamic Development Bank";
+    // let y = Array.from(idb);
+    // let y = [...idb];
+    let y = idb.split("");
+    console.log(y);
+    let rochona = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sit quo dolor ut tempora. Ipsam enim fuga, impedit neque vero, ea voluptatum excepturi nihil debitis quo magni quisquam totam corrupti.";
+    let words = rochona.split(" ");
+    console.log("Rochona has " + words.length + " words");
+</script>

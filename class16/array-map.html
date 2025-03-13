@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="questionsContainer">
+
+    </div>
+    <div id="result">
+  
+    </div>
+    <script>
+        const questions = [
+    {
+        question: "What is the correct way to declare a JavaScript variable?",
+        options: ["var myVar;", "variable myVar;", "v myVar;", "let: myVar;"],
+        correct: 0
+    },
+    {
+        question: "Which keyword is used to define a constant variable in JavaScript?",
+        options: ["var", "let", "const", "constant"],
+        correct: 2
+    },
+    {
+        question: "What is the output of typeof null?",
+        options: ["null", "undefined", "object", "number"],
+        correct: 2
+    },
+    {
+        question: "Which method converts a JSON string into a JavaScript object?",
+        options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()", "JSON.objectify()"],
+        correct: 0
+    },
+    {
+        question: "Which built-in function removes the last element from an array and returns it?",
+        options: ["shift()", "pop()", "push()", "splice()"],
+        correct: 1
+    },
+    {
+        question: "What does the '===' operator do in JavaScript?",
+        options: ["Checks for equality in value", "Checks for equality in value and type", "Assigns a value", "Compares references"],
+        correct: 1
+    },
+    {
+        question: "How do you write a comment in JavaScript?",
+        options: ["<!-- This is a comment -->", "// This is a comment", "/* This is a comment */", "Both 2 and 3"],
+        correct: 3
+    },
+    {
+        question: "Which function is used to schedule a function call after a delay?",
+        options: ["setTimeout()", "setInterval()", "delay()", "wait()"],
+        correct: 0
+    },
+    {
+        question: "What is the output of '5' + 3 in JavaScript?",
+        options: ["8", "53", "Error", "undefined"],
+        correct: 1
+    },
+    {
+        question: "Which symbol is used for single-line comments in JavaScript?",
+        options: ["//", "/*", "--", "#"],
+        correct: 0
+    },
+    {
+        question: "Which method is used to find the length of an array?",
+        options: ["size", "count", "length", "getSize"],
+        correct: 2
+    },
+    {
+        question: "Which of the following is a JavaScript framework?",
+        options: ["Laravel", "React", "Django", "Flask"],
+        correct: 1
+    },
+    {
+        question: "What is the correct way to write an arrow function?",
+        options: ["function => {}", "()=>{}", "function() => {}", "->{}"],
+        correct: 1
+    },
+    {
+        question: "How do you declare an asynchronous function in JavaScript?",
+        options: ["async function myFunc() {}", "function async myFunc() {}", "await function myFunc() {}", "async: function myFunc() {}"],
+        correct: 0
+    },
+    {
+        question: "Which event is triggered when an HTML element is clicked?",
+        options: ["onmouseover", "onchange", "onclick", "onsubmit"],
+        correct: 2
+    },
+    {
+        question: "What is the purpose of the JavaScript map() function?",
+        options: ["Modify an object", "Create a new array by applying a function", "Filter an array", "Sort an array"],
+        correct: 1
+    },
+    {
+        question: "Which operator is used to check if a value is not equal in JavaScript?",
+        options: ["!=", "!==", "Both 1 and 2", "==!"],
+        correct: 2
+    },
+    {
+        question: "How do you stop an interval set by setInterval()?",
+        options: ["clearInterval()", "stopInterval()", "clearTimeout()", "cancelInterval()"],
+        correct: 0
+    },
+    {
+        question: "Which of the following is a falsy value in JavaScript?",
+        options: ["true", "1", "'false'", "0"],
+        correct: 3
+    },
+    {
+        question: "Which method is used to convert a JavaScript object to a JSON string?",
+        options: ["JSON.parse()", "JSON.stringify()", "toJSON()", "stringifyJSON()"],
+        correct: 1
+    }
+];
+
+
+        
+        var options = ['var myVar','var my var','let 1myVar','const #myVar'];
+        var result = options.map(function(option,i){
+            return `<label><input type="radio" name="q${i}" value="${i}">${option}</label><br>`;
+        });
+        // console.log(result.join(''));
+        document.getElementById('result').innerHTML = result.join('');
+
+        questions.forEach((element,imteaz) => {
+            document.getElementById("questionsContainer").innerHTML += `
+                <div class="question">
+                    <h3>${imteaz + 1}. ${element.question}</h3>
+                ${ element.options.map((option,i) => {
+                    return `<label><input type="radio" name="q${imteaz}" value="${i}">${option}</label><br>`
+                }).join('')
+                    }
+                </div> <hr>`;
+        });
+    </script>
+</body>
+</html>
