@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trainee Registration Form</title>
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="radio"] + label {
+            display: inline-block;
+            
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="traineeForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="remarks">Remarks:</label>
+                <textarea id="remarks" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Sex:</label>
+                <input type="radio" name="sex" value="Male" id="male" required> <label for="male">Male</label> 
+                <input type="radio" name="sex" value="Female" id="female"> <label for="female">Female</label>
+            </div>
+            
+            <div class="form-group">
+                <label>Courses:</label>
+                <input type="checkbox" name="courses" value="NT"> NT<br>
+                <input type="checkbox" name="courses" value="IAD"> IAD<br>
+                <input type="checkbox" name="courses" value="DDD"> DDD<br>
+                <input type="checkbox" name="courses" value="ESAD"> ESAD
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <select id="location" required>
+                    <option value="">Select Location</option>
+                    <option value="Banani">Banani</option>
+                    <option value="Dhanmondi">Dhanmondi</option>
+                    <option value="Mirpur">Mirpur</option>
+                </select>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        class Trainee {
+            constructor(name, contact, remarks, sex, courses, location) {
+                this.name = name;
+                this.contact = contact;
+                this.remarks = remarks;
+                this.sex = sex;
+                this.courses = courses;
+                this.location = locatio;
+            }
+
+            formatData() {
+                return `
+                    <html>
+                    <head>
+                        <title>Trainee Details</title>
+                        <style>
+                            body { 
+                                font-family: Arial, sans-serif; 
+                                padding: 20px; 
+                            }
+                            .details { 
+                                border: 1px solid #ccc; 
+                                padding: 20px; 
+                                max-width: 500px; 
+                            }
+                            h2 { 
+                                color: #4CAF50; 
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="details">
+                            <h2>Trainee Details</h2>
+                            <p><strong>Name:</strong> ${this.name}</p>
+                            <p><strong>Contact:</strong> ${this.contact}</p>
+                            <p><strong>Remarks:</strong> ${this.remarks || 'None'}</p>
+                            <p><strong>Sex:</strong> ${this.sex}</p>
+                            <p><strong>Courses:</strong> ${this.courses.length > 0 ? this.courses.join(', ') : 'None selected'}</p>
+                            <p><strong>Location:</strong> ${this.location}</p>
+                        </div>
+                    </body>
+                    </html>
+                `;
+            }
+        }
+
+        class FormHandler {
+            constructor(formId) {
+                this.form = document.getElementById(formId);
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+            }
+
+            getSelectedCourses() {
+                const checkboxes = this.form.querySelectorAll('input[name="courses"]:checked');
+                return Array.from(checkboxes).map(checkbox => checkbox.value);
+            }
+
+            handleSubmit(event) {
+                event.preventDefault();
+
+                //creating object from class Trainee
+                const t = new Trainee(
+                    this.form.querySelector('#name').value,
+                    this.form.querySelector('#contact').value,
+                    this.form.querySelector('#remarks').value,
+                    this.form.querySelector('input[name="sex"]:checked').value,
+                    this.getSelectedCourses(),
+                    this.form.querySelector('#location').value
+                );
+
+                const newWindow = window.open('', 'TraineeDetails', 'width=600,height=400');
+                newWindow.document.write(t.formatData());
+                newWindow.document.close();
+                this.form.reset();
+            }
+        }
+
+        // Initialize form handler// creating object of class
+        const formHandler = new FormHandler('traineeForm');
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+(x) => x >= 0
+
+var p = function(x){
+let positive = x>=0;
+return positive;
+}
+
+var p = function(x){
+return x>=0;
+}
+
+var q = (x) => x>=0; 
+
+p(7)

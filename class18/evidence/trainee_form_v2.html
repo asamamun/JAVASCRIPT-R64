@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Trainee Registration Form</title>
+    <style>
+        #error { color: white; padding: 10px; margin-bottom: 10px; }
+        table { border-collapse: collapse; }
+        td { padding: 5px; }
+    </style>
+    <script>
+        class Trainee {
+            constructor(name, contact, remark, sex, courses, location) {
+                this.name = name;
+                this.contact = contact;
+                this.remark = remark;
+                this.sex = sex;
+                this.courses = courses;
+                this.location = location;
+            }
+
+            validateData() {
+                let errors = [];
+                if (!this.name) errors.push("name is required");
+                if (!this.contact) errors.push("Contact is required");
+                if (!this.sex) errors.push("sex is required");
+                if (this.location === "Select") errors.push("Location is required");
+                if (!this.remark) errors.push("Remarks is required");
+                if (this.courses.length === 0) errors.push("Course is required");
+                return errors;
+            }
+
+            formatOutput() {
+                const courseList = this.courses.length > 0 ? this.courses.join(", ") + "." : ".";
+                return `
+                    <html>
+                    <head>
+                        <style>
+                            table { border-collapse: collapse; width: 100%; }
+                            td, th { padding: 5px; border: 1px solid black; }
+                            caption { background-color: red; color: white; padding: 5px; }
+                            th { background-color: #f0f0f0; }
+                        </style>
+                    </head>
+                    <body>
+                        <table>
+                            <caption>Information of the Students:</caption>
+                            <tr><td>Name of the student:</td><th>${this.name}</th></tr>
+                            <tr><td>Contact No.</td><th>${this.contact}</th></tr>
+                            <tr><td>Gender</td><th>${this.sex}</th></tr>
+                            <tr><td>Course Name</td><th>${courseList}</th></tr>
+                            <tr><td>Location</td><th>${this.location}</th></tr>
+                            <tr><td>Remarks</td><th>${this.remark}</th></tr>
+                        </table>
+                    </body>
+                    </html>
+                `;
+            }
+        }
+
+        class FormManager {
+            constructor(formId) {
+                this.form = document.forms[formId];
+                this.errorDiv = document.getElementById("error");
+                this.form.Button.onclick = () => this.handleSubmit();
+            }
+
+            getSelectedCourses() {
+                const checkboxes = this.form.chkcourse;
+                return Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+            }
+
+            getSelectedSex() {
+                const radios = this.form.rdsex;
+                for (let radio of radios) {
+                    if (radio.checked) return radio.value;
+                }
+                return "";
+            }
+
+            handleSubmit() {
+                const trainee = new Trainee(
+                    this.form.txtname.value,
+                    this.form.txtcontact.value,
+                    this.form.txtremark.value,
+                    this.getSelectedSex(),
+                    this.getSelectedCourses(),
+                    this.form.lstlocation.value
+                );
+
+                const errors = trainee.validateData();
+                
+                if (errors.length === 0) {
+                    const newWindow = window.open("", "output", "scrollbars=0,width=400,height=250,resizable=no");
+                    newWindow.document.write(trainee.formatOutput());
+                    newWindow.document.close();
+                    this.errorDiv.style.background = "";
+                    this.errorDiv.innerHTML = "";
+                    this.form.reset();
+                } else {
+                    this.errorDiv.style.background = "red";
+                    this.errorDiv.innerHTML = "<ul>" + errors.map(err => `<li>${err}</li>`).join("") + "</ul>";
+                }
+            }
+        }
+
+        // Initialize when page loads
+        window.onload = () => {
+            new FormManager("form1");
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" name="form1" method="post" action="">
+        <p><div id="error"></div></p>
+        <table id="Table1" width="532px" border="1" style="background-color:gray">
+            <tr>
+                <td width="53">Name</td>
+                <td width="144"><input name="txtname" type="text" id="txtname" /></td>
+                <td width="112">Contact</td>
+                <td width="286"><input name="txtcontact" type="text" id="txtcontact" /></td>
+            </tr>
+            <tr>
+                <td>Remark</td>
+                <td colspan="3"><textarea name="txtremark" cols="70" rows="5" id="txtremark"></textarea></td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td colspan="3">
+                    <input name="rdsex" type="radio" value="Male" /> Male
+                    <input name="rdsex" type="radio" value="Female" /> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td colspan="3">
+                    <input name="chkcourse" type="checkbox" value="NT" /> NT
+                    <input name="chkcourse" type="checkbox" value="IAD" /> IAD
+                    <input name="chkcourse" type="checkbox" value="DDD" /> DDD
+                    <input name="chkcourse" type="checkbox" value="ESAD" /> ESAD
+                </td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td colspan="3">
+                    <select name="lstlocation" id="lstlocation">
+                        <option value="Select">Select</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Mirpur">Mirpur</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="3"><input type="button" name="Button" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainee Form</title>
+</head>
+<body>
+    <form id="traineeForm">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Contact: <input type="text" name="contact" required></label><br>
+        
+        <p>Sex:</p>
+        <label><input type="radio" name="sex" value="Male" required> Male</label>
+        <label><input type="radio" name="sex" value="Female"> Female</label><br>
+        
+        <p>Courses:</p>
+        <label><input type="checkbox" name="courses" value="NT"> NT</label>
+        <label><input type="checkbox" name="courses" value="IAD"> IAD</label>
+        <label><input type="checkbox" name="courses" value="DDD"> DDD</label>
+        <label><input type="checkbox" name="courses" value="ESAD"> ESAD</label><br>
+        
+        <label>Location:
+            <select name="location">
+                <option value="Banani">Banani</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mirpur">Mirpur</option>
+            </select>
+        </label><br>
+
+        <label>Remarks: <textarea name="remarks"></textarea></label><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        class TraineeForm {
+    constructor(formId) {
+        this.form = document.getElementById(formId);
+        this.form.addEventListener("submit", (event) => this.handleSubmit(event));
+    }
+//getFormData method returns object with properties name, contact, remarks, sex, courses, location
+    getFormData() {
+        return {
+            name: this.form.name.value,
+            contact: this.form.contact.value,
+            remarks: this.form.remarks.value,
+            sex: this.form.sex.value,
+            courses: Array.from(this.form.courses).filter(c => c.checked).map(c => c.value),
+            location: this.form.location.value
+        };
+    }
+
+    formatData(data) {
+        return `
+            <h2>Trainee Details</h2>
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Contact:</strong> ${data.contact}</p>
+            <p><strong>Sex:</strong> ${data.sex}</p>
+            <p><strong>Location:</strong> ${data.location}</p>
+            <p><strong>Courses:</strong> ${data.courses.join(", ")}</p>
+            <p><strong>Remarks:</strong> ${data.remarks}</p>
+        `;
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();//form jeno submit na hoy
+        const data = this.getFormData();
+        const newWindow = window.open("", "_blank", "width=400,height=400");
+        newWindow.document.write(this.formatData(data));
+        newWindow.document.close();
+    }
+}
+// when page loads create object of TraineeForm class
+document.addEventListener("DOMContentLoaded", () => new TraineeForm("traineeForm"));
+
+    </script>
+</body>
+</html>

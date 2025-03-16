@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>A callback is a function passed as an argument to another function</h1>
+    <h1>This technique allows a function to call another function</h1>
+    <h1>A callback function can run after another function has finished</h1>
+    <p id="demo"></p>
+    <script>
+        function myDisplayer(some) {
+            console.log(some);
+  document.getElementById("demo").innerHTML = some;
+}
+      function myFirst() {
+        myDisplayer(("Hello"));
+      }
+
+      function mySecond() {
+        myDisplayer("Goodbye");
+      }
+
+      myFirst();
+      mySecond();
+      console.log("Program ends");
+
+/*
+      function myDisplayer(some) {
+  alert(some);
+}
+function myCalculator(num1, num2) {
+  let sum = num1 + num2;
+  myDisplayer(sum);
+}
+let result = myCalculator(5, 5);
+*/
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+function showinalert(m){
+    alert(m);
+}
+//here we can pass a function as an argument in m parameter
+function myCalculator(num1, num2, m) {
+  let sum = num1 + num2;
+  //if m get myDisplayer it will call myDisplayer(10) // if m get showinalert it will call showinalert(10)
+  m(sum); 
+}
+//A callback is a function passed as an argument to another function
+myCalculator(5, 5, myDisplayer);
+myCalculator(5, 5, showinalert);
+    </script>
+  </body>
+</html>

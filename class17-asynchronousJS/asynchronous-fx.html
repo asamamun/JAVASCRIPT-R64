@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Functions running in parallel with other functions are called asynchronous functions</h1>
+    <h2 id="demo">hahaha hohoho</h2>
+    <script>
+        function res(){
+            let d = document.getElementById("demo");
+        d.innerHTML = "In the real world, callbacks are most often used with asynchronous functions.A typical example is JavaScript setTimeout().";
+        d.style.color = ["red", "green", "blue", "yellow", "black", "white", "gray", "pink"][Math.floor(Math.random() * 8)];
+    }
+        // setTimeout(res, 8000); //setTimeout is asynchronous function example
+        setInterval(res, 300);//setInterval is asynchronous function example
+        console.log("Program ends");//program ends wil not wait for setTimeout or setInterval. As synchronous functions are running in parallel with other functions so program ends will not wait for setTimeout or setInterval.
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainee Registration Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    label { margin-right: 10px; }
+    .form-group { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<h2>Trainee Registration Form</h2>
+
+<form id="traineeForm" onsubmit="return displayData(event)">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" required>
+  </div>
+
+  <div class="form-group">
+    <label for="remarks">Remarks:</label>
+    <textarea id="remarks"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Sex:</label>
+    <input type="radio" id="male" name="sex" value="Male" required> Male
+    <input type="radio" id="female" name="sex" value="Female"> Female
+  </div>
+
+  <div class="form-group">
+    <label>Courses:</label>
+    <input type="checkbox" id="nt" value="NT"> NT
+    <input type="checkbox" id="iad" value="IAD"> IAD
+    <input type="checkbox" id="ddd" value="DDD"> DDD
+    <input type="checkbox" id="esad" value="ESAD"> ESAD
+  </div>
+
+  <div class="form-group">
+    <label for="location">Location:</label>
+    <select id="location" required>
+      <option value="Banani">Banani</option>
+      <option value="Dhanmondi">Dhanmondi</option>
+      <option value="Mirpur">Mirpur</option>
+    </select>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  class TraineeForm {
+  constructor(formId) {
+    this.form = document.getElementById(formId);
+    this.nameField = this.form.querySelector('#name');
+    this.contactField = this.form.querySelector('#contact');
+    this.remarksField = this.form.querySelector('#remarks');
+    this.sexFields = this.form.querySelectorAll('input[name="sex"]');
+    this.courseFields = this.form.querySelectorAll('input[type="checkbox"]');
+    this.locationField = this.form.querySelector('#location');
+    this.form.addEventListener('submit', (event) => this.handleSubmit(event));
+  }
+
+  getSelectedSex() {
+    return [...this.sexFields].find(radio => radio.checked)?.value || 'Not specified';
+  }
+
+  getSelectedCourses() {
+    return [...this.courseFields]
+      .filter(checkbox => checkbox.checked)
+      .map(checkbox => checkbox.value)
+      .join(', ') || 'None';
+  }
+
+  displayData(data) {
+    const newWindow = window.open('', '', 'width=400,height=400');
+    newWindow.document.write(`
+      <h2>Trainee Data</h2>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Contact:</strong> ${data.contact}</p>
+      <p><strong>Remarks:</strong> ${data.remarks}</p>
+      <p><strong>Sex:</strong> ${data.sex}</p>
+      <p><strong>Courses:</strong> ${data.courses}</p>
+      <p><strong>Location:</strong> ${data.location}</p>
+    `);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const traineeData = {
+      name: this.nameField.value,
+      contact: this.contactField.value,
+      remarks: this.remarksField.value,
+      sex: this.getSelectedSex(),
+      courses: this.getSelectedCourses(),
+      location: this.locationField.value,
+    };
+    this.displayData(traineeData);
+    // this.form.reset();
+  }
+}
+
+// Initialize form handling
+document.addEventListener('DOMContentLoaded', () => {
+  new TraineeForm('traineeForm');
+});
+
+</script>
+</body>
+</html>
