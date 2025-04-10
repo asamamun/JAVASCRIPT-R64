@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="email" id="email">
+    <input type="button" value="check" onclick="checkEmail()">
+    <script>
+        class Email{
+            constructor(e){
+                this.email = e;
+            }
+            checkEmail(){
+                 return (this.email.includes("@") && this.email.includes(".")) ? true : false
+ /*                if(this.email.includes("@") && this.email.includes(".")){
+                    return true;
+                }
+                else{
+                    return false;
+                } */
+            }
+        }
+        function checkEmail(){
+/*             let userval = document.getElementById("email").value;
+            let email = new Email(userval); */
+            let email = new Email(document.getElementById("email").value);
+           /*  if(email.checkEmail()){
+                alert("valid email");
+            }
+            else{
+                alert("invalid email. @ or . missing");
+            } */
+           email.checkEmail() ? alert("valid email") : alert("invalid email. @ or . missing");
+        }
+    </script>
+</body>
+</html>

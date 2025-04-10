@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPL Players by Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .player-card-img {
+      width: 100%;
+      /* height: 150px; */
+      object-fit: cover;
+    }
+    .team-list {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .list-group-item {
+      cursor: pointer;
+    }
+    .list-group-item.active {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid my-4">
+    <h1 class="text-center mb-4">FPL Players by Team</h1>
+    <nav class="mb-3">
+      <a href="gameweek.html" class="btn btn-primary">Go to Gameweek Info</a>
+    </nav>
+    <div class="row">
+      <!-- Team Names (Left Sidebar) -->
+      <div class="col-md-3">
+        <div class="team-list">
+          <div class="list-group" id="teamList"></div>
+        </div>
+      </div>
+      <!-- Players (Right Content) -->
+      <div class="col-md-9">
+        <div id="playerContainer">
+          <p class="text-muted">Select a team to view its players.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('http://localhost:3000/fpl');
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+      }
+    }
+
+    function renderTeamList(teams, playersByTeam) {
+      const teamList = document.getElementById('teamList');
+      let html = '';
+      teams.forEach((team, index) => {
+        const playerCount = playersByTeam[team.id] ? playersByTeam[team.id].length : 0;
+        html += `
+          <button type="button" class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" data-team-id="${team.id}">
+            ${team.name} (${playerCount})
+          </button>
+        `;
+      });
+      teamList.innerHTML = html;
+
+      // Add click event listeners
+      const teamItems = teamList.querySelectorAll('.list-group-item');
+      teamItems.forEach(item => {
+        item.addEventListener('click', function() {
+          teamItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          const teamId = this.getAttribute('data-team-id');
+          renderPlayers(teamId, playersByTeam);
+        });
+      });
+
+      // Render first team's players by default
+      if (teams.length > 0) {
+        renderPlayers(teams[0].id, playersByTeam);
+      }
+    }
+
+    function renderPlayers(teamId, playersByTeam) {
+      const container = document.getElementById('playerContainer');
+      const players = playersByTeam[teamId] || [];
+      let html = `
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+      `;
+      players.forEach(player => {
+        const imageUrl = `https://resources.premierleague.com/premierleague/photos/players/250x250/p${player.code}.png`;
+        html += `
+          <div class="col">
+            <div class="card h-100">
+              <img src="${imageUrl}" class="card-img-top player-card-img" alt="${player.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/250x250?text=No+Image'">
+              <div class="card-body">
+                <h5 class="card-title">${player.name}</h5>
+                <p class="card-text">
+                  Position: ${player.position}<br>
+                  Team: ${player.team}
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+      container.innerHTML = players.length > 0 ? html : '<p class="text-muted">No players found for this team.</p>';
+    }
+
+    (async () => {
+      const data = await fetchData();
+      if (!data) return;
+
+      const teams = data.teams;
+      const positions = {
+        1: 'Goalkeeper',
+        2: 'Defender',
+        3: 'Midfielder',
+        4: 'Forward'
+      };
+
+      const playersByTeam = data.elements.reduce((acc, player) => {
+        const teamId = player.team;
+        if (!acc[teamId]) acc[teamId] = [];
+        acc[teamId].push({
+          code: player.code,
+          name: `${player.first_name} ${player.second_name}`,
+          position: positions[player.element_type],
+          team: teams.find(t => t.id === teamId).name
+        });
+        return acc;
+      }, {});
+
+      renderTeamList(teams, playersByTeam);
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

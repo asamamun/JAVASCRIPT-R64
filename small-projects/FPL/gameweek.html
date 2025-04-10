@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPL Gameweek Information</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">FPL Gameweek Information</h1>
+    <nav class="mb-3">
+      <a href="index.html" class="btn btn-primary">Go to Players by Team</a>
+    </nav>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Deadline</th>
+          <th>Finished</th>
+          <th>Current</th>
+        </tr>
+      </thead>
+      <tbody id="gameweekTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('http://localhost:3000/fpl');
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+      }
+    }
+
+    function renderGameweeks(data) {
+      const gameweeks = data.events;
+      const tbody = document.getElementById('gameweekTable');
+      let html = '';
+      gameweeks.forEach(gw => {
+        html += `
+          <tr>
+            <td>${gw.id}</td>
+            <td>${gw.name}</td>
+            <td>${new Date(gw.deadline_time).toLocaleString()}</td>
+            <td>${gw.finished ? 'Yes' : 'No'}</td>
+            <td>${gw.is_current ? 'Yes' : 'No'}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    }
+
+    (async () => {
+      const data = await fetchData();
+      if (data) renderGameweeks(data);
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
